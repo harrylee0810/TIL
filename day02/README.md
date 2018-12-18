@@ -26,7 +26,7 @@
 
 ## 파일조작
 
-### 파일명 변경 (import os)
+### 1. 파일명 변경 (import os)
 
 1. `os.chdir(r'폴더 주소')` : 작업하고 있는 위치 변경
 2. `os.listdir('.')` : 현재 working directory의 파일 목록 리스트 얻기
@@ -38,7 +38,7 @@
 
 ------------
 
-#### 1.  사람 이름이 적힌 txt파일 500개 생성하기
+#### A.  사람 이름이 적힌 txt파일 500개 생성하기
 
 ```python
 import os
@@ -54,7 +54,35 @@ for i in range(1,501):
 
 *  `str(i)` : i는 기본적으로 숫자형임. `str()` 을 사용하여 문자열 type으로 변경
 
-#### 2.   파일 제목을 변경하기
+#### B.   파일 제목을 변경하기
+
+```python
+import os
+os.chdir(r'C:\Users\student\harry\day02\dummy')
+for filename in os.listdir('.'):
+    new_filename = filename.replace('지원자_지원자','합격자')
+    os.rename(filename, new_filename)
+print(os.listdir())    
+```
+
+### 2. 파일 생성하기
+
+#### 1) 기본
+
+```python
+f = open('ssafy.txt','w') #w: write. r:read, a:append
+f.write('This is SSAFY!')
+f.close() 
+```
+
+* `w: write, r: read, a: append`
+
+* `close()`를 꼭 넣어야 정상적으로 종료가 됨. (계속 열려있는 상태) 
+
+  Otherwise, `open()` 사용 시, 열려 있다는 에러가 뜰 수 있음.
+
+
+
 
 
 
