@@ -14,7 +14,12 @@
 * `git add .` : 현재 폴더의 변경사항들을 commit하기 위해서 준비
 * `git commit -m 'day 02입니다.' ` : commit, 변경사항 저장. 메세지는 자유롭게 작성 가능
 * `git push -u origin master` : remote로 등록된 원격 저장소(remote repository).
+
   * 이후에는 `git push` 만입력해도 동작 
+
+  * `-u`  : 현재컴퓨터에 있는 branch 이랑과 github의  branch 이름이 같은 경우, 
+
+    뒤의 명령어를 생략하는 기능임 -u 이후 명령어 생략
 
 
 
@@ -38,7 +43,7 @@
 
 ------------
 
-#### A.  사람 이름이 적힌 txt파일 500개 생성하기
+#### 사람 이름이 적힌 txt파일 500개 생성하기
 
 ```python
 import os
@@ -54,7 +59,7 @@ for i in range(1,501):
 
 *  `str(i)` : i는 기본적으로 숫자형임. `str()` 을 사용하여 문자열 type으로 변경
 
-#### B.   파일 제목을 변경하기
+####  파일 제목을 변경하기
 
 ```python
 import os
@@ -65,9 +70,11 @@ for filename in os.listdir('.'):
 print(os.listdir())    
 ```
 
-### 2. 파일 생성하기
+----------
 
-#### 1) 기본
+### 2. 파일 생성; 쓰기 및 읽기
+
+#### 1) 파일 생성 및 쓰기
 
 ```python
 f = open('ssafy.txt','w') #w: write. r:read, a:append
@@ -81,11 +88,37 @@ f.close()
 
   Otherwise, `open()` 사용 시, 열려 있다는 에러가 뜰 수 있음.
 
+#### 2) 파일 생성 및 쓰기 -1
 
+```python
+with open('ssafy.txt','w', encoding='utf8') as f:
+    #각 줄에 1,2,3 입력하기
+    f.writelines(['1\n','2\n','3\n']) 
+    #This is 'SSAFY!' 숫자 입력하기
+    for i range(10): 
+        f.write(f'This is \'SSAFY\' {i}\n')
+```
 
+* `with` 문은 가장 대표적으로 쓰이는 `Context Manager` 임
+* `write` : 기본적인 입력 함수 
+* `writelines`  : 리스트 등 여러문장을 입력할 때 사용하는 함수
+* `\` 는 `\` 다음 오는 문자가 반드시 입력되게 할 때 사용 (예. "" 안에 "" 입력)
 
+#### 3) 파일 읽기
 
-
+```python
+with open('ssafy.txt','r', encoding='utf8') as f:
+    lines = f.readlines()
+    print(lines) #결과값: ['1\n', '2\n', '3\n']
+    
+    #개행문자 제거하여 출력하기 (strip 함수 이용)
+    for l in lines
+	    print(l.strip()) 
+        #결과값:
+        # 1
+        # 2
+        # 3
+```
 
 
 
@@ -116,9 +149,7 @@ f.close()
 
 `git push -u origin master`
 
-현재컴퓨터에 있는 branch 이랑과 github의  branch 이름이 같은 경우, 
 
-뒤의 명령어를 생략하는 기능임 -u 이후 명령어 생략
 
 
 
@@ -141,6 +172,10 @@ f.close()
 `git add 파일명.확장자` : 해당 파일을 git에 추가
 
 `git add .` 현재 디렉토리 내 모든 파일을 업데이트
+
+`cd ..`  : 상위폴더로 이동
+
+
 
  
 
