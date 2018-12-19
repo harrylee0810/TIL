@@ -3,10 +3,17 @@
 ## Git 설정
 
 * `git config --global user.name 'Harry lee'` : 이름 설정
+
 * `git config --global user.email 'sinyo0523@gmail.com'`  : 이메일 설정
+
 * `git init` : Git 초기화, 현재 폴더를 git으로 관리하겠다!
+
 * `git remote add origin 주소 `  : 원격 저장소 등록
+
   * `git remote set-url origin 주소` : 원격저장소 수정 
+
+* `git clone`
+
 
 ## commit & Push
 
