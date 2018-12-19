@@ -3,17 +3,11 @@
 ## Git 설정
 
 * `git config --global user.name 'Harry lee'` : 이름 설정
-
 * `git config --global user.email 'sinyo0523@gmail.com'`  : 이메일 설정
-
 * `git init` : Git 초기화, 현재 폴더를 git으로 관리하겠다!
-
 * `git remote add origin 주소 `  : 원격 저장소 등록
-
   * `git remote set-url origin 주소` : 원격저장소 수정 
-
-* `git clone`
-
+* `git clone 주소(github web URL 주소)` : 다른 컴퓨터에서 Github에 저장된 파일 동기화 및 Init
 
 ## commit & Push
 
@@ -27,7 +21,6 @@
   * `-u`  : 현재컴퓨터에 있는 branch 이랑과 github의  branch 이름이 같은 경우, 
 
     뒤의 명령어를 생략하는 기능임 -u 이후 명령어 생략
-
 
 
 * Mark down을 이용한 메모/저장

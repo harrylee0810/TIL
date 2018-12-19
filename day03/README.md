@@ -1,8 +1,6 @@
-
-
 # DAY03 - 오전
 
-문제 1.
+#### **Quiz 1.**
 
 문자열을 입력받아 문자열의 첫 글자와 마지막 글자를 출력하는 프로그램을 작성하시오.
 
@@ -12,17 +10,23 @@ print(str[0]) #첫번째 글자
 print(str[-1]) #마지막 글자
 ```
 
-문제 2.
+#### **Quiz 2.**
 
 자연수 N이 주어졌을 때, 1부터 N까지 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
 
+```python
+n = int(input('숫자를 입력하세요: ')) 
+i = 0
+while i < n:
+    print(i+1)
+    i += 1
 ```
 
+```python
+n = int(input('숫자를 입력하세요: ')) 
+for i in range(n):
+    print(i+1)
 ```
-
-
-
-* git clone 'githup개인주소'
 
 ### git 활용법
 
@@ -48,8 +52,6 @@ print(str[-1]) #마지막 글자
 
 # HTML & CSS
 
-
-
 HTML: Hypertext Markup 언어.  웹페이지를 만드는 컴퓨터 언어
 
 CSS(Cascading Stype Sheets):  마크업 언어(HTML)이 실제 표시되는 방법을 기술하는 언어
@@ -62,15 +64,12 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 
 * CSS Framework를 활용하면, HTML의 스타일을 직접 하지 않고, 적절한 디자인을 적용할 수 있음.
 
-  (HTML Style을 도와주는 서비스 혹은 라이브러리의 개념)
+  (HTML Style을 도와주는 서비스 혹은 라이브러리의 개념
+
+특정 태그들을 골라내는 역할? 선택자? 셀렉터
 
 
-HTML을 꾸미는 도구/Tool ? CSS
-
-* 특정 태그들을 골라내는 역할? 선택자? 셀렉터
-
-
-## HTML의 구성
+## 1. HTML의 기본 구성
 
 ```html
 <!DOCTYPE html> 
@@ -86,9 +85,9 @@ HTML을 꾸미는 도구/Tool ? CSS
 </html>
 ```
 
-### 태그
+## 2. 태그
 
-#### 구역 구분 태그
+### 구역 구분 태그
 
 1. `<title> </title>` : 웹브라우져 Tab에 나타나는 HTML문서의 제목 (제목정보 담는 태그)
 
@@ -102,9 +101,7 @@ HTML을 꾸미는 도구/Tool ? CSS
    * `div` 는 배경색이 레이아웃 가로 모두에 적용
    * `span`은 다른텍스트와 구별하기 위해 사용. 배경색은 글자가 있는 곳만 적용
 
-
-
-####  텍스트 스타일 수정 태그
+###  텍스트 스타일 수정 태그
 
 1. `<b> </b>`  : 텍스트 강조 (Bold)
 
@@ -114,89 +111,78 @@ HTML을 꾸미는 도구/Tool ? CSS
 
 
 
+## 3. CSS 속성
 
-### CSS 속성
+### CSS 기본 구성
+
+`<head>`   안에서 태그명을 입력하여 CSS를 작성할 수 있음.
+
+(위의 예시는 `<style>` 태그를 사용 / h1,h2,h3 tag의 색깔을 지정)
 
 ```html
-  		<style>
-            h1 { 
-                color: red;
-            }
-            h2 {
-                color: blue;
-            }
-            h3 {
-                color: red;
-            }
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<style>
+            h1 {color: red;}
+            h2 {color: blue;}
+            h3 {color: red;}
+            #green {color: green;}
+            .yellow {color: yellow;}
         </style>
+    </head>
+    
+    <body>
+        <h1 style="color: pink;">이것은 h1 태그입니다.</h1>
+        <h2>이것은 h2 태그입니다.</h2>
+        <h3>이것은 h3 태그입니다.</h3>
+        <h4 id="green"> 이것은 h4 태그입니다.</h4>
+        <h5 class="yellow">이것은 h5 태그입니다.</h5>
+        <h6 class="yellow">이것은 h6 태그입니다.</h6>
+    </body>
 ```
 
+### 같은 속성을 구분하지 않고, 한꺼번에 수정하기
 
-
-같은 속성을 구분하지 않고 한꺼번에 수정하기?
+속성이 같은 경우, 태그명을 ,(콤마) 로 열거하여 한꺼번에 적용가능
 
 ```html
         <style>
-            h1,h3 { 
-                color: red;
-            }
-            h2 {
-                color: blue;
-            }
+            h1,h3 {color: red;}
+            h2 {color: blue;}
         </style>
 ```
 
+### id와 class를 활용하여 CSS 적용하기 (CSS의 선택자들)
 
+#id: 전체 문서에서 딱 하나만 입력 가능한, 태그의 고유한 id 값 (태그의 주민등록번호)
+
+.class: 태그가 어떠한 반에 속해 있는지?  공통된 속성을 적용하고 싶을 때 사용
 
 ```html
+        <style>
+            #green {color: green;}
+            .yellow {color: yellow;}
+        </style>
+
 <h4 id="green"> 이것은 h4 태그입니다.</h4>
-```
-
-id: 전체문서에서 딱 하나만 입력 가능. 태그의 고유한  id 값 입력
-
-```html
-        <style>
-            #green {
-                color: green;
-            }
-            .yellow {
-                color: yellow;
-            }
-        </style>
-```
-
-#id 입력하여 id로 지정된 태그 내용을 style을 쉽게 수정할 수 있음
-
-
-
-```php+HTML
 <h5 class="yellow">이것은 h5 태그입니다.</h5>
 <h6 class="yellow">이것은 h6 태그입니다.</h6>
 ```
 
-class: 어떠한 반에 속해 있는지?  같은 문서내에 여러번 사용 가능
-
-```html
-        <style>
-            .yellow {
-                color: yellow;
-            }
-        </style>
-```
-
-`.class명`  을 입력하여 class로 지정된 태그 내용을 style을 쉽게 수정할 수 있음
-
-
-
-#### inline style
+### inline style
 
 해당하는 태그 내에서 직접 입력도 가능
 
 인라인 스타일로 들어간 것이 가장 우선순위 둠.
 
-우선순위
+```html
+    <body>
+        <h1 style="color: pink;">이것은 h1 태그입니다.</h1>
+    </body>
+```
 
- 인라인 스타일 > ID > CLASS
+CSS 적용 우선순위? inline style > id > class
 
 `ctrl + /`  : 주석 입력하기
 
@@ -204,7 +190,7 @@ class: 어떠한 반에 속해 있는지?  같은 문서내에 여러번 사용 
 
 # DAY03 - 오후
 
-**Quiz 4.** 
+#### **Quiz 4.** 
 
 표준 입력으로 국어, 영어, 수학, 과학 점수가 입력됩니다.
 
@@ -217,8 +203,6 @@ class: 어떠한 반에 속해 있는지?  같은 문서내에 여러번 사용 
 과학은 80점 이상일 때 합격이라고 정했습니다.(한 과목이라도 조건에 만족하지 않으면 불합격)
 
 다음 코드를 완성하여 합격이면 True, 불합격이면 False가 출력되도록 작성하시오. 
-
-
 
 ```python
 a = int(input('국어: '))
@@ -234,9 +218,7 @@ else:
 
 ​	 input으로 추출되는 값은 문자열(string) 이므로, 숫자를 입력할때는 int로 다시 감싸줘야한다.
 
-
-
-**Quiz 5.**
+#### **Quiz 5.**
 
 표준 입력으로 물품 가격 여러 개가 문자열 한 줄로 입력되고, 각 가격은 ;(세미콜론)으로 구분되어 있습니다.
 
@@ -268,11 +250,9 @@ print(int_prices)
 
 
 
+# Flask를 활용한 어플리케이션 구축
 
-
-### Flask를 활용한 어플리케이션 구축
-
-**Flask 모듈 설치**
+## 1. Flask 모듈 설치
 
 `pip install flask`  : Flask  모듈 설치
 
@@ -282,7 +262,9 @@ print(int_prices)
 
 
 
-##### 1. (주소에) 이름(예. 현수) 입력 후, 반갑습니다 현수님 출력하기
+## 2. Flask를 활용한 예시
+
+### 1. (주소에) 이름(예. 현수) 입력 후, 반갑습니다 현수님 출력하기
 
 ```python
 from flask import Flask
@@ -293,15 +275,15 @@ def greeting(name):
     return f'반갑습니다! {name}님'
 ```
 
-` <string:name>` : <자료형: 변수이름> 은 대표적인 이름 방식. 이경우,  string이라는 자료형에 name이라는 변수명을 명명하였다.
+` <string:name>` : <자료형: 변수이름> 은 대표적인 이름 방식. 
+
+이경우,  string이라는 자료형에 name이라는 변수명을 명명하였다.
 
 `/greeting/<string:name>` : variable routing이라고 함.
 
 `def greeting(name):` ()안에는 변수명 입력
 
-
-
-##### 2. 숫자(예. 3) 입력 후, 3의 세제곱 값 출력
+### 2. 숫자(예. 3) 입력 후, 3의 세제곱 값 출력
 
 ````PYTHON
 from flask import Flask
@@ -313,9 +295,9 @@ def cube(num):
     return f'{num}의 세제곱은 {cube} 입니다.'
 ````
 
+formatting을 사용할 경우, 자료형이 기본적으로 문자열(string)으로 변하기때문에,  따로 str()을 사용하지 않아도 괜찮음.
 
-
-##### 3. 사람 수(예. 5) 입력 후, 수 만큼 메뉴를 랜덤으로 출력
+### 3. 사람 수(예. 5) 입력 후, 수 만큼 메뉴를 랜덤으로 출력
 
 ````python
 from flask import Flask
@@ -337,9 +319,7 @@ Flask에서는 두가지  자료형만 사용 가능(문자열;string & response
 
 `random.sample(menu, person)`  menu: 리스트, person: 추출하고자 하는 갯 수
 
-
-
-##### 4. HTML 태그를 활용하여 페이지 출력
+### 4. HTML 태그를 활용하여 페이지 출력
 
 ```python
 from flask import Flask
@@ -355,11 +335,9 @@ def html():
     return multiline_string
 ```
 
-이 경우, python 언어와 html 언어가 뒤섞이고 가독성이 떨어지는 코드임을 알 수 있다.
+이 경우, python 언어와 html 언어가 뒤섞이고 가독성이 떨어지는 코드임을 알 수 있음.
 
-
-
-##### 5. render_template을 활용 - Python과 HTML을 각각 분리하여 다른 페이지에서 입력하기
+### 5. render_template을 활용 - Python과 HTML을 각각 분리하여 다른 페이지에서 입력하기
 
 ```python
 from flask import Flask
@@ -375,7 +353,7 @@ def html_file():
 <p>여기는 p! p!</p>
 ```
 
-render_template: 메소드. 플라스크가 구현하는 함수 ( import render_template 입력 요)
+render_template: 메소드.  플라스크가 구현하는 함수 ( import render_template 입력 요)
 
 이후, html 파일을 import하여 별개의 파일을 연동시켜서 작성 할 수 있음.
 
@@ -385,9 +363,7 @@ render_template: 메소드. 플라스크가 구현하는 함수 ( import render_
 
 <u>**(html_file.html은 templates 폴더 안에 넣기)**</u>
 
-
-
-##### 6. render_template을 활용2 -  HTML 파일을 이용한 Variable routing
+### 6. render_template을 활용2 -  HTML 파일을 이용한 Variable routing
 
 ```python
 from flask import Flask
@@ -400,11 +376,8 @@ def hi(name):
 
 ```html
 <style>
-    h1 {
-        color: red; 
-    }
+    h1 {color: red;}
 </style>
-
 <h1>만나서 반갑습니다! {{name_in_html}}님 </h1>
 ```
 
@@ -412,7 +385,7 @@ def hi(name):
 
 flask에서 지원하는 html파일을 이용하여 name을 입력할때는 중괄호를 두개 써야함.
 
-##### 7.  Fake 주소 쓰기
+### 7.  Fake 주소를 활용하여 네이버 검색결과 사이트 열기
 
 ```python
 from flask import Flask
@@ -434,13 +407,7 @@ def fake_naver():
 
 (입력된 데이터를 전달 버튼 눌렀을 때, 어떤 페이지로 데이터를 전달할지 입력하는 부분)
 
-예) 
-
 1. `<form> </form>` : 태그
 2. `<action>`  : 태그의 속성 (type은 대표적인 필수 속성)
 3. `text` : 속성의 Value(값)
 4.  `	submit` : 서버로 데이터를 전송해주라는 속성 값
-
-
-
-def 함수명: 파이썬 코드 내에서 쓰는 것
