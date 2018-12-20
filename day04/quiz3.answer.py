@@ -15,24 +15,21 @@ city = {
 광주: 값
 구미: 값
 '''
+#1. 반복
 #city.items() #=> 리스트의 형태로 출력; [('서울'),[-6, -10, 6], ....]
 for name, temp in city.items():
     #name #=> '서울'
     #temp #=> [-6, -10, 6]
-    
-    #1. 반복
     total_temp = 0
     count = 0
     for t in temp:
-        #1번째 시행
-        # t = -6
+        #1번째 시행: t = -6
         total_temp += t
         count += 1
     avg_temp = total_temp / count
     print(f'{name}:{avg_temp}')
 
-
-    #2. 내장함수
+#2. 내장함수
 for name, temp in city.items():
     avg_temp = sum(temp) /len(temp)
     print(f'{name}:{avg_temp}')   
