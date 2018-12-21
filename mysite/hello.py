@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import random
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -60,6 +61,19 @@ def pong():
     
     return render_template('pong.html', name_in_html=name, result=result)
 
+
+@app.route("/ping1")
+def ping1():
+    return render_template('ping1.html')
+
+
+@app.route("/pong1")
+def pong1():
+    return render_template('pong1.html')
+
+
+
+
 @app.route('/lotto/<int:num>')
 def lotto(num):
     url = f'https://dhlottery.co.kr/common.do?method=getLottoNumber&drwNo={num}'
@@ -75,3 +89,20 @@ def lotto(num):
     #winner & bonus 리스트를 lotto.html 에 넘겨줘야함.
 
     return render_template('lotto.html', w=winner, b=bonus, n=num)
+
+@app.route('/write')
+def write():
+    return render_template('write.html') #write.html을 띄워주는 /write 페이지 생성
+
+@app.route('/send')
+def send():
+
+    token = os.getenv('TELEGRAM_BOT_TOKEN')
+    chat_id = os.getenv('CHAT_ID')
+    text = request.args['message']
+
+    # args는 dic형태임. []쓸것.
+
+    requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}')
+
+    return render_template('send.html') 
