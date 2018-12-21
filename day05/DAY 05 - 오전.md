@@ -70,8 +70,8 @@ chat_id & token은 고유번호(주민등록번호) 이므로, py  파일 안에
 3. 데이터를 다음과 같이 입력(.bash_profile 파일 내용)
 
 ```python
-export TELEGRAM_BOT_TOKEN='766959295:AAG7uArdPfidy1JjPQaVr2A1aJMJrvuc9pU'
-export CHAT_ID='760097723'
+export TELEGRAM_BOT_TOKEN='71111:AAG7abababadfafsfsdfsdf'
+export CHAT_ID='1111111'
 ```
 
 
@@ -158,7 +158,7 @@ def send():
 
     # args는 dic형태임. []쓸것.
 
-    requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}')
+requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}')
 
     return render_template('send.html') 
 ```
@@ -167,7 +167,7 @@ http://127.0.0.1:5000/send?message=오호
 
 
 
-#### setWebhook
+## setWebhook
 
 텔레그램으로 메세지를 작성 -> 텔레그램 서버로 전송 (어딘가의 데이터 베이스에 저장)
 
@@ -223,7 +223,187 @@ FLASK_APP=app.py flask run --host=$IP --port=$PORT
 
 
 
+1) URL을 텔레그램에 알려주기
 
+​	c9 ~/.bashrc : 윈도우 배쉬프로그램에 숨겨놨던 키 값 찾기
+
+​	생긴 .bashrc 파일에 텔레그램 봇 토큰 값을 입력 (export TEL EGRAM_BOT_TOKEN = '토큰값')
+
+2) printenv: 운영체제가 어떠한 값들을 keep하고 있는지? 
+
+
+
+get: 주소창에 입력하는 방식 
+
+post: 어떠한 정보를 보내서, 데이터베이스에 저장을 한다거나, 파일을  내부적으로생성하는 동작
+
+텔레그램은 항상 POST방식 사용
+
+
+
+SetWebhook에 있는 url  파라미터를 사용해야함.
+
+기본 url 구조는?
+
+`https://api.telegram.org/bot<token>/setWebhook?url=<cloud9 Application주소>/<token>`
+
+
+
+`https://api.telegram.org/bot<token>/METHOD_NAME` : 요청(Request)를 보내는 기본 양식
+
+`METHOD_NAME`으로  `setWebhook`  이라는 METHOD_NAME + url이라는 파라미터를 조합 -> `setWebhook?url=`
+
+url 이하 주소는 cloud9 application 주소
+
+`https://api.telegram.org/bot<token>/setWebhook?url=http://telegram-harrylee0810.c9users.io:8080/<token>`
+
+url이하에 cloud9 application주소 입력 후 / 토큰 입력
+
+
+
+C9이라는 것을 사용하는 이유? 웹훅이라는 것을 사용하기위해
+
+해당 유저가 어떠한 메세지를 텔레그램에 보내면, 
+
+텔레그램은 데이터를 저장하고 가지고있을것.
+
+그리고 그것을 응답해야 유저가 받을 수 있음.
+
+```python
+import os
+from flask import Flask
+app = Flask(__name__)
+
+token = os.getenv('TELEGRAM_BOT_TOKEN')
+
+@app.route(f'/{token}', methods=['POST'])
+def telegram():
+    
+    return '', 200
+
+if __name__ == '__main__':
+    app.run(host=os.getenv('IP','0.0.0.0'),port=int(os.getenv('PORT',8080)))
+
+```
+
+1. 유저A가 텔레그램을 통해 메세지를 보냄
+
+2. 메세지는 텔레그램 서버로 전송 & 메세지를 들고 있음.
+
+   2.1 (원래라면) 갖고 있는 메세지를 유저B로보낼것
+
+3.  여기서 우리는 봇을 생성함 (가상의 유저)
+
+4. 봇은 가상의 채팅방,사람이므로, 누군가가 관리를 해줘야함
+
+    => 토큰을 이용 (토큰은 봇을  봇을 조작 할 수 있는 권한 개념)
+
+5.  원래는 깡통봇. 어떠한 메세지를  입력해도 채팅방 내에서만 돌고돔.
+
+6.  웹훅이라는  개념을 이용해서, 텔레그램아, 봇한테 어떠한 사용자가 메세지를보내면 그걸 다른사람에게도 알려줘~
+
+   => setWebhook?url= "서버주소"
+
+   텔레그램한테 이 서버주소로 메세지를 보내라고 설정하는것
+
+   이 주소는 C9과 같음.(FLASK & C9 WEB SERVER)
+
+   SSAFY 컴퓨터는 개인 컴퓨터이므로, 접속할 수 있는 주소가 없음.
+
+   개인컴퓨터 -> 웹사이트, 서버 접속은 가능하나,
+
+   웹서버, 사이트 -> 개인컴퓨터 로의 접속 은 매우 까다롭다 (도메인도 사야함)
+
+   이러한 절차를 간편하게한것이 C9
+
+   http://telegram-harrylee0810.c9users.io:8080/ C9 서버를 이용하면 텔레그램이 메세지를 보낼 수 있음.
+
+7. 여기까지, 텔레그램이 메세지를 보내면, C9에서 지금 Positive한 응답을 하는 것임.
+
+ [21/Dec/2018 05:45:48] "GET / HTTP/1.1" 200 - 이라 뜨면, 응답이 재대로 되는것임.
+
+
+
+#1. 어떤 메세지가 뜨는지 확인하기 위해서는?(구조 확인 하기)
+
+#2. 그대로 돌려보내기 (메아리)
+
+```python
+import os
+import requests #=> requests를 import 해야함. 
+				#=> pip install requests도 할것
+from flask import Flask, request
+app = Flask(__name__)
+
+token = os.getenv('TELEGRAM_BOT_TOKEN')
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+@app.route(f'/{token}', methods=['POST'])
+def telegram():
+    
+    #1. 구조 확인하기
+    from_telegram = request.get_json()  #=> dict
+    print(from_telegram)
+    
+    #2. 그대로돌려보내기 (메아리)
+    #['message']  #=> 키가 없으면 에러 발생!
+    #.get('message') #=> 키가 없으면 None (에러 발생 x)
+    if from_telegram.get('message') is not None:
+        chat_id = from_telegram['message']['from']['id']
+        text = from_telegram['message']['text']
+        #api.telegram.org => api.hphk.io/telegram
+        requests.get(f'https://api.hphk.io/telegram/bot{token}/sendMessage?chat_id={chat_id}&text={text}')
+    
+    
+    return '', 200
+
+if __name__ == '__main__':
+    app.run(host=os.getenv('IP','0.0.0.0'),port=int(os.getenv('PORT',8080)))
+```
+
+
+
+https://gist.github.com/nwith/
+
+completed.py에 지정한  변수명을 .bashrc 에 업로드 해야함
+
+c9 ~/.bashrc
+
+```python
+export NAVER_CLIENT_ID=''
+export NAVER_CLIENT_SECRET=''
+```
+
+
+
+exec $SHELL : 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://core.telegram.org/bots/api#setWebhook?url=https://telegram-harrylee0810.c9users.io/766959295:AAG7uArdPfidy1JjPQaVr2A1aJMJrvuc9pU
 
 
 
