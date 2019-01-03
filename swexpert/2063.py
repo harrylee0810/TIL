@@ -15,6 +15,5 @@
 # 58
 
 init_num = int(input())
-num = list(map(int, input().split()))
-
-
+num = sorted(list(map(int, input().split())))
+print(num[int(len(num)/2)])
