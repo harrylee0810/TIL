@@ -5,25 +5,14 @@
 
 
 init_num = int(input())
-lst =[]
+
 for i in range(1,init_num+1):
     if init_num % i == 0:
-        lst.append(i)
-
-for i in lst:
-    print(i, end=" ")
+        print(i, end=" ")
 
 
-
-
-
-
-
-# init_num = int(input())
-# lst =[]
 # for i in range(1,init_num+1):
 #     if init_num % i == 0:
-#         lst.append(i)
-
-# for i in lst:
-#     print(i, end=" ")
+#         if i != 1:
+#             print(' ', end='')
+#         print(i, end="")
