@@ -1,20 +1,22 @@
 # Git & GitHub
 
-#### *새로운 자리에 깃 동기화 하는 방법*
+##  Git repository를 clone한 경우
+
+#### *새로운* 자리에 깃 동기화 하는 방법
 
 #### 1. 복사하고자 하는 폴더를 Github에서 가져 오기.
 
-`git clone <깃헙 복사된 주소> <폴더명>`
+`git clone <깃헙 복사된 주소> [폴더명]`
 
-`git clone https://github.com/harrylee0810/TIL.git harry`
+예) `git clone https://github.com/harrylee0810/TIL.git harry`
 
-- 개인 설정을 하지 않은 상태에서 내려 받을 수 있는 이유?
+개인 설정을 하지 않은 상태에서 내려 받을 수 있는 이유?
+
 - TIL repository  는 public으로 공개 설정되어있기 때문에, 누구나 다운로드는 사용 가능.
 - but 업로드 및 수정은 권한이 있는 사람만 가능.
 - git clone으로 내려 받은 파일/폴더는 git init/git remote add origin 등을 할 필요 없음 
-- (이미 git으로 관리 되고 있기 때문임) 
 
-- `git remote add origin`: github 주소를 등록해서 어디에 올릴 지에 대한 정보를 입력하는 명령어)
+  (이미 git으로 관리 되고 있기 때문임) 
 
 #### 2. Git bash에 입력된 기존의 계정 정보 삭제하기
 
@@ -44,11 +46,24 @@
 
 *public으로 공개된 타인의 폴더를 clone으로 내려 받은 후, push가 가능한가?*
 
-*commit은 누구나 할 수있음 (git log시, commit된 정보가 update된 것을 알 수 있다/)*
+*commit은 누구나 할 수있음 (git log시, commit된 정보가 update된 것을 알 수 있 음)*
 
-*그러나 git push 시, 권한이 없어deny 됨.*
+*그러나 git push 시, 권한이 없어 git push가 deny 됨. (하위 deny message참조요망)*
 
 > remote: Permission to sgmpy/materials.git denied to harrylee0810.                                                                     fatal: unable to access 'https://github.com/sgmpy/materials.git/': The requested URL returned error: 403
+
+
+
+```bash
+#Git이름, 이메일 재설정
+git config --global user.name 'Harry Lee'
+git config --global user.email 'sinyo0523@gmail.com'
+
+#GitHub 로그인 정보 초기화
+git credential reject
+protocol=https
+host=github.com
+```
 
 
 
@@ -64,3 +79,24 @@
 
 
 
+## Git Commit & Push
+
+- `git status` : 현재 폴더의 git 의 상태 확인
+
+- `git add .` : 현재 폴더의 변경사항들을 commit하기 위하여 준비
+
+  ​			`.`  대신에 특정 파일 이름도 가능 
+
+- ` git commit -m 'D04 | 190107 AM | Git & CLI'` : commit, 변경사항 저장.  `''`안에 있는 메세지는 자유롭게 작성 가능.
+
+- `git push -u origin master`  : remote로 등록된 원격 저장소에 commit한 것들 올리기
+
+  - 이후에는 git push만 입력해도 동작함. (`git clone`을 한경우에도 해당됨)
+  - 이 컴퓨터에서 최초 push인 경우, 로그인 창이 뜨며 로그인을해줍니다.
+
+
+
+## Git pull
+
+- `git pull` : GitHub에 올라가 있는 내용들, 즉 commit들을 내려받는 것.
+- 아침에 오자마자 `git pull` 한번 하고 시작합시다!
