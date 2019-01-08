@@ -17,5 +17,5 @@ for k in lst:
     print(f'{k}(은)는 {init_num}의 약수입니다.')
 
 if len(lst) == 2:
-    print(f'{init_num}(은)는 {lst[0]}과 {lst[1]} 로만 나눌 수 있는 소수입니다.')        
+    print(f'{init_num}(은)는 {lst[0]}과 {lst[1]}로만 나눌 수 있는 소수입니다.')        
     
