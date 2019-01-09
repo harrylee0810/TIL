@@ -14,9 +14,9 @@ a = input()
 b = input()
 
 if (a == game[0] and b == game[2]) or (a == game[1] and b == game[0]) or (a == game[2] and b == game[1]):
-    print("a win")
+    print("Result : Man1 win!")
 else:
-    print("b win")
+    print("Result : Man2 win!")
  
 # win case
 # 가위 보

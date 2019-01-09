@@ -16,4 +16,4 @@ temp_c2  = format(temp_c , '.2f')
 temp_f = (temp_c*1.8) + 32
 temp_f2 = format(temp_f , '.2f')
 
-print(f'{temp_c2} ℃  =>  {temp_f2} ℉')
+print(f'{temp_c2} ℃ =>  {temp_f2} ℉')
