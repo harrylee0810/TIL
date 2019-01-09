@@ -12,9 +12,8 @@
 # 섭씨(F) = 32 + C * 1.8
 
 temp_f = float(input())
-temp_f2 = print(f'{temp_f:.2f}')
-print(temp_f2)
+temp_f2 = f'{temp_f:.2f}'
+temp_c = (5*(temp_f-32))/9
+temp_c2 = f'{temp_c:.2f}'
 
-# c = (5*(f-32))/9
-# print(c)
-
+print(f'{temp_f2} ℉ =>  {temp_c2} ℃')
