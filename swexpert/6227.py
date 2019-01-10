@@ -7,12 +7,16 @@
 # 264,266,268,280,282,284,286,288
 
 lst = []
-for i in range(100,110):
+for i in range(100,301):
     lst.append(str(i))
 
-print(lst)
-lst1 = []
-for i in lst:
-    for k in i:
-        if int(k) % 2 == 0:
-            lst1.append(k)
+
+lst2 = []
+for j in lst: # j = '210', '200'
+    if int(j[0]) % 2 == 1 or int(j[1]) % 2 == 1 or int(j[2]) % 2 == 1:
+        continue
+    else:
+        lst2.append(j)
+
+result = ','.join(map(str,lst2))
+print(result)
