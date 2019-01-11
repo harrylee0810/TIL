@@ -16,4 +16,5 @@
 
 init_num = int(input())
 num = sorted(list(map(int, input().split())))
+print(num)
 print(num[int(len(num)/2)])
