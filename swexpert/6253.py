@@ -2,10 +2,14 @@
 # 입력: 25
 # 출력: 1001
 
-# a = 25
-# result = ''
+a = 25
+result = ''
 
-# while a > 0:
-#     q = a % 2
-#     r = a // 2
-#     result +=
+while a > 0:
+    mok = a // 2
+    nam = a % 2
+    result = str(nam) + result
+    a = mok
+
+print((result))
+
