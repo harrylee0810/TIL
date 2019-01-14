@@ -9,6 +9,7 @@
 lst = []
 for i in range(100,301):
     lst.append(str(i))
+print(lst)
 
 
 lst2 = []

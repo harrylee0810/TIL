@@ -86,11 +86,11 @@ Static Web : 정말 단순한 웹 서비스
 
 주소만 보면 어떠한 것인지 알 수 없음. 따라서 우리는 경북대학교 라고 이름을 명명함.
 
-여기서 주소는 IP주소, 경북대학교는 컴퓨터 주소 라고 할 수 있음.
+여기서 주소는 IP주소, 경북대학교는 웹 사이트 주소 라고 할 수 있음.
 
 IP 주소: 172.217.27.78
 
-컴퓨터 주소: google.com
+웹 사이트 주소: google.com
 
 
 
@@ -110,7 +110,7 @@ URI: 상위개념/ URL
 
 URL: 네트워크 상에서 자원이 어디에 있는지를 알려주기 위한 고유 규약
 
-흔히 웹 사이트 주소로 알고 있지만, URL은 웹 사이트 주소 뿐만 컴퓨터 네트웨크 상의 자원을 모두 나타 낼수 있음
+흔히 웹 사이트 주소로 알고 있지만, URL은 웹 사이트 주소 뿐만 컴퓨터 네트워크 상의 자원을 모두 나타 낼수 있음
 
 
 
@@ -161,7 +161,6 @@ HTML(Hyper Text Markup Language) : 웹페이지를 작성하기 위한 역할 �
 
   - body 요소: 브라우저 화면에 나타나는 정보로 실제 내용에 해당한다.
 
-    
 
 ## Tag와 DOM TREE (Document Object Model)
 
@@ -244,7 +243,11 @@ non sementic  요소: div, span 등
 
 
 
-### 대표적으로 사용되는 Tag에 대해 알아보자
+### 대표적인 HTML의 Tag (1)
+
+- 제목 / 굵게 / 기울임 / 강조 / 취소선  / 밑줄 / 아래첨자 / 윗 첨자 /
+
+  문단 구분 / 줄 구분 /  그대로 입력 / 구분선 / 인용 / 리스트 
 
 ```html
 <body>
@@ -320,9 +323,127 @@ non sementic  요소: div, span 등
 
 
 
-list의 bullet 모양을 바꿔 봅시다!
+### 대표적인 HTML의 Tag (2)
 
-<li style 
+- 링크 / 이미지 / 동영상 / 동영상 링크
+
+```html
+<section id="link">		
+<!-- a(anchor): 정박하다. 링크 등과 연동되는 태그
+    href.values
+   	 1. 절대 URL 예) google.com
+     2. 상대 URL
+     3. element id 
+		예) #python 등과 같이 입력 후 이동하고자 하는 태그에 
+			id="python" 처럼 입력,
+     4. mailto:
+    
+	target
+     1. target="_self" - 현재 탭에서 실행
+     2. target="_blank" - 새로운 탭에서 실행 -->
+    
+	<a href="https://www.google.com" target="_self">
+        절대 URL</a>
+    <a href="index.htm" target="_blank">상대 URL</a>
+    <a href="#python">파이썬으로(id python)</a>
+    <a href="mailto:nowater.in.the.house@gmail.com">메일보내기		</a>
+</section>
+
+<!-- Bullet의 모양 변경: 
+	none, square, circle, lower-alpha, 
+	upper-alpha, upper-roman -->
+
+	<ul style="list-style-type: circle;">
+    	<li>HTML</li>
+    	<li>CSS</li>
+	</ul>
+
+<!-- img: 이미지 등록
+	1. src: 이미지 파일에 대한 경로
+	2. alt: 이미지 파일에 대한 설명
+	3. width & height: 이미지 파일 너비 & 높이 -->
+	<img src="images/minsu.jpg" alt="민수" width="400px" 		height="">
+
+	<video src="video.mp4" width="300px" height="" controls>	</video>
+
+<!-- iframe: 동영상 링크 연결 -->
+	<iframe width="560" height="315" src="주소" 				frameborder="0">
+	</iframe>
+
+```
+
+
+
+### 대표적인 HTML의 Tag (3)
+
+- 표 만들기, 입력창, 목록상자, 체크박스,  선택박스
+
+```html
+<section>
+    <!-- table -->
+    <table>
+        <!-- table row -->
+        <tr>
+            <!-- table head -->
+            <th></th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+        </tr>
+        <tr>
+            <!-- table data -->
+            <td>A 코스</td>
+            <!-- rowspan : 세로 칸 늘리기 -->                
+            <td rowspan="2">짬뽕</td>
+            <!-- colspan : 가로 칸 늘리기 -->
+            <td colspan="2">초밥</td>
+
+        </tr>
+        <tr>
+            <td>B 코스</td>
+            <td>김치찌개</td>
+            <td>삼계탕</td>   
+        </tr>
+    </table>
+</section>
+
+<section>
+<!-- form: 입력창 태그 -->
+<form action="" method="GET">
+    <input type="text"><br>
+    <input type="password"><br>
+    <input type="number" min="15" max="30" step="5"><br>
+
+    <!-- radio: 선택박스 -->
+    <div>
+        <input type="radio" name="sandwich">에그 마요<br>
+        <input type="radio" name="sandwich">비엠티<br>
+        <input type="radio" name="sandwich">터키 베이컨<br>
+    </div>
+
+    <!-- checkbox: 체크박스 -->
+    <div>
+        <input type="checkbox" name="topping">토마토<br>
+        <input type="checkbox" name="topping">오이<br>
+        <input type="checkbox" name="topping">할라피뇨<br>
+        <input type="checkbox" name="topping">핫 칠리<br>
+        <input type="checkbox" name="topping">바베큐 소스<br>
+    </div>
+
+    <!-- select: 목록상자 -->
+    <div>
+        <select name="" id="">
+            <option>허니오트밀</option>
+            <option disabled>플랫브레드</option>
+            <option selected>파마산 오레가노</option>
+        </select>
+    </div>
+
+    <input type="submit" value="로그인">
+</form>
+```
+
+AA
 
 
 
