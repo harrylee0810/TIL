@@ -6,14 +6,14 @@
 
 a = input()
 l ="LETTERS "
-l.count = 0
+count1 = 0
 d="DIGITS "
-d.count = 0
+count2 = 0
 for i in a:
-    if i.isdigit():
-        d.count += 1
-    elif i.isalpha():
-        l.count += 1
+    if i.isalpha():
+        count1 += 1
+    elif i.isdigit():
+        count2 += 1
 
-print(l.count)
-print(d.count)
+print(f'{l}{count1}')
+print(f'{d}{count2}')

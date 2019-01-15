@@ -1,0 +1,10 @@
+.font {
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 700;
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-align: center;
+
+}

@@ -54,6 +54,8 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 </head>
 ```
 
+
+
 **2) Embedding style (stye tag 사용하기)**
 
 ```html
@@ -65,6 +67,8 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 </head>
 ```
 
+
+
 **3) Link style (css 파일 link)**
 
 ```html
@@ -75,7 +79,9 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 
 
 
-### 선택자의 종류
+### 선택자
+
+------
 
 **1) 전체 선택자**
 
@@ -94,6 +100,8 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 </body>
 ```
 
+
+
 **2) 태그 선택자**
 
 - 스타일을 적용하고 싶은 태그명을 선택자에 입력하면, 그 태그에만 스타일이 적용됨.
@@ -110,6 +118,8 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
     <h1>rosybrown, 태그 선택자</h1>
 </body>
 ```
+
+
 
 **3) 클래스 선택자**
 
@@ -129,6 +139,8 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
     <h2 class="blue">blue, .클래스 선택자</h2>
 </body>
 ```
+
+
 
 **4) 아이디 선택자**
 
@@ -227,6 +239,8 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 
 ### CSS font-sizes(단위 길이)
 
+------
+
 https://www.w3schools.com/css/css_units.asp
 
 **1) 문서 전체의 단위 길이 적용**
@@ -312,7 +326,9 @@ https://www.w3schools.com/css/css_units.asp
 
 
 
-### CSS Box Model
+### CSS Box Model 
+
+------
 
 모든 HTML 요소들은 박스로 간주 할 수 있으며, CSS Box Model은 문서의 design과 layout을 일컫음.  
 
@@ -350,11 +366,24 @@ https://www.w3schools.com/css/css_units.asp
 
 **2) padding & margin**
 
+- `padding` :  border 의 안쪽 여백
+
+- `margin` : border의 바깥쪽 여백
+
+- `padding: 25px` 와 같이, 상/하/좌/우의 여백을 동시에 줄 수 도 있으며,
+
+  `padding-top: 25px` 와 같이, 개별적으로 여백을 적용 할 수 있다.
+
+  cf) `padding: 25px 20px 15px 10px`  처럼, 연속적으로 각각의 여백을 한줄로 표현도 가능.
+
+  ​      순서는 위부터 시계 방향(위 / 오른쪽 / 아래 / 왼쪽)
+
 ```html
 <head>
     <style>
         box {
             /* 안쪽 여백 */
+            /* padding: 25px */
             padding-top: 25px; 
             padding-right: 25px;
             padding-bottom: 25px;
@@ -371,15 +400,143 @@ https://www.w3schools.com/css/css_units.asp
 
 
 
+**3) border**
+
+- `border-width` : 테두리의 두께
+
+- `border-style` : 테두리의 스타일
+
+- `border-color` : 테두리 색상
+
+  cf)  `border: 2px solid purple;` 처럼 또한 연속적으로 테두리에 대한 설정을 할 수 있음.
+
+  ​       순서는 두께 > 스타일 > 색상 순임.
+
+- `border-radius` : 테두리 모서리 둥글기 정도
+
+```html
+<head>
+    <style>
+        box {
+            
+            /*border: 2px solid purple;*/            
+            border-width: 2px;
+            border-style: solid;
+            border-color: purple;
+            
+            /* 테두리 모서리 둥글기 정도 */
+            border-radius: 20px;            
+         }      
+    </style>
+</head>
+```
 
 
-padding: 안쪽여백
 
-marging: 바깥쪽 여백
 
-상하좌우 모두 동시에 적용됨.
 
-방향에 따라 따로 여백 조정?
+디스플레이 설정을 하지 않으면 기본적으로 block이 들어감.
+
+block은 전체 
+
+인라인: 자기자신(컨텐츠)를 담고있는 곳 까지만 박스를 설정
+
+div는 전체 한 라인을 담음(블럭)
+
+span은 인라인 속성을 가짐.
+
+
+
+박스가 어떻게 보이는지?
+
+visibility / opacity
+
+
+
+박스를어디에위치할건지?
+
+앱솔루트는 좌표(절대값) 기준으로 화면 내 어디로든 자유롭게 이동 가능.
+
+바디의 좌측 상단이 0,0
+
+(top / left)
+
+
+
+기준점을 변경 & 선택하게 하는 디스플레이 속성?
+
+relative: 다른 박스와 조화되어 움직임.
+
+부모태그를 기준으로 
+
+
+
+fixed: 웹툰 볼때, 몇화인지? 바를 내려도 고정적으로 보이는 부분
+
+
+
+absolute: 이사
+
+relative: 본가 놔두고 이사
+
+
+
+박스간의 앞/뒤로 가기 이동?
+
+z-index;
+
+
+
+absolute & fixed: 이사 가버림. 기존 위치는 아애 비워져버리므로. static box가 있는 경우, 순차적으로 그자리를 차지해버림.
+
+relative: 본인의 자리를 기준으로 이동. (공간 정리를 하지 않음; 자취방)
+
+
+
+### font
+
+------
+
+- `font-size` : font의 크기 설정
+
+- `font-style` :  font의 스타일 설정
+
+- `font-weight`: font의 굵음의 정도 설정 (일반적으로 100~900 사이)
+
+- `font-family` : font 종류를 지정
+
+  - 컴퓨터에 모든 폰트가 들어 있지 않으므로, font-name 중 원하는 폰트를 여러가지 나열하여,
+
+    (font-stack) 마지막에 generic-family를 적어줌.
+
+  - 이를 통해, 적어도 폰트가 없을 때, 끝에 있는 generic fa,ily에서비슷한 폰트를 브라우저가 찾아서 보여줌.
+
+  - web-safe font 종류: verdana /  georgia /  times new roman / aria
+
+  - 구글 폰트( `https://fonts.google.com/` )를 통해서 다양한 폰트를 적용 할 수도 있음.
+
+- `line-height` : 줄 간격 설정
+
+  - font 사이즈에 비례하여 상대적으로 설정하거나 (기준: font size 1), 
+  - 픽셀 크기로  설정 가능 
+
+- `letter-spacing` : font의 장평 조절 (플러스로 가면, 장평이커지고 마이너스로 가면 장평이작아짐)
+
+- `text-align` : 정렬 위치 설정 (center, end, inherit)
+
+```css
+.font {
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-align: center;
+}
+```
+
+
 
 
 

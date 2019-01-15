@@ -1,0 +1,16 @@
+div {
+    height: 200px;
+}
+
+.background-color {
+    background-color:  blue;
+}
+.background-image {
+    background-image: url(images/minsu.jpg);
+    background-position: center center; /* 가로,세로 초점 이동 */
+    background-size: cover;
+    /* contain & 200px 200px & cover */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* fixed & scroll */
+}
