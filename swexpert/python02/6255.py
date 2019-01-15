@@ -24,9 +24,11 @@ a = {
     "세탁기": 1000000,
 }
 
-lst_tuple = list()
+lst_tuple = []
 for i, v in a.items():
     lst_tuple.append((v,i))
 
 lst_tuple = sorted(lst_tuple, reverse = True)
-print(lst_tuple)
+
+for i in range(len(lst_tuple)):
+    print(f'{lst_tuple[i][1]}: {lst_tuple[i][0]}')
