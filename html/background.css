@@ -7,10 +7,10 @@ div {
 }
 .background-image {
     background-image: url(images/minsu.jpg);
-    background-position: center center; /* 가로,세로 초점 이동 */
-    background-size: cover;
+    background-position: bottom bottom; /* 가로,세로 초점 이동 */
+    background-size: contain;
     /* contain & 200px 200px & cover */
-    background-repeat: no-repeat;
+    background-repeat: initial;
     background-attachment: fixed;
     /* fixed & scroll */
 }

@@ -1,18 +1,31 @@
 # CSS
 
-CSS(Cascading Stype Sheets):  마크업 언어(HTML)이 실제 표시되는 방법을 기술하는 언어
+CSS(Cascading Stype Sheets):  마크업 언어(HTML)이 실제 표시되는 방법을 기술하는 언어.
 
 HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 같이 웹사이트를 꾸미는 역할을 담당한다.
 
-- Bootstrap:  트위터를 만든 회사에서 만든 CSS Framework를 제공하는 사이트
+- Bootstrap:  트위터를 만든 회사에서 만든 CSS Framework를 제공하는 사이트 (http://bootstrapk.com/)
 
-  (http://bootstrapk.com/)
+- CSS Framework를 활용하면, HTML의 스타일을 직접 하지 않고, 적절한 디자인을 적용할 수 있음. (HTML Style을 도와주는 서비스 혹은 라이브러리의 개념)
 
-- CSS Framework를 활용하면, HTML의 스타일을 직접 하지 않고, 적절한 디자인을 적용할 수 있음.
 
-  (HTML Style을 도와주는 서비스 혹은 라이브러리의 개념)
 
-특정 태그들을 골라내는 역할? 선택자? 셀렉터
+
+> 웹 표준은 이제 더 이상 무시할 수 없는 키워드입니다. 
+>
+> World Wide Web(WWW)의 의미대로 가능한 많은 사람이 웹을 이용하기 위해서는, 모든 브라우저에서 ‘똑같이 보이는 것’이 아니라 ‘각 브라우저에 알맞게 보이는 것’이 중요하기 때문입니다. 
+>
+> 그래서 웹 표준에서는 구조(Constructure)와 표현(Presentation)과 행위(Behavior)를 각각 분리해서 개발하기를 권유합니다. 
+>
+> 이렇게 하면, 각 사용자는 구조화 된 마크업에 따라 다양한 디자인을 제공받을 수 있기 때문입니다. 뿐만 아니라 사이트의 로딩속도도 빨라지고 개발과 유지보수 또한 쉬워집니다.
+>
+> - 구조 : 웹 콘텐츠에 의미를 부여하고 구조를 형성 → HTML
+>
+> - 표현 : 시각적인 디자인과 레이아웃 표현 → CSS
+>
+> - 행위 : 모든 front-end의 브라우저 상호작용을 담당 → JavaScript
+>
+>   ​						    참조: http://www.nextree.co.kr/p8468/
 
 
 
@@ -24,7 +37,7 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
     <head>
 		<style>
             h1 {
-                color: red;
+                color: aqua;
         </style>
     </head>
 ```
@@ -44,19 +57,19 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 **1) Inline style (인라인 스타일)**
 
 ```html
-<head>
+<body>
 	<section id="web">
         <ul style="list-style-type: circle;">
             <li>HTML</li>
             <li>CSS</li>
         </ul>
     </section>
-</head>
+</body>
 ```
 
 
 
-**2) Embedding style (stye tag 사용하기)**
+**2) Embedding style (style tag 사용하기)**
 
 ```html
 <head>
@@ -79,9 +92,11 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 
 
 
-### 선택자
+### 선택자(Selector)
 
 ------
+
+선택자란 말 그대로 선택을 해주는 요소를 말함. 이를 통해 특정 요소들을 선택하여 스타일을 적용 할 수 있게 됨.
 
 **1) 전체 선택자**
 
@@ -144,10 +159,10 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 
 **4) 아이디 선택자**
 
-- ​사용자가 지정한 아이디에 대하여 스타일을 적용함.
+- 사용자가 지정한 아이디에 대하여 스타일을 적용함.
 - 아이디는 html문서안에 유일하게 하나만 가질 수 있음.
 - 아이디를 `id="green"` 와 같이, 적용하고자 하는 태그에 아이디를 지정.
-- ​선택자에는 `#green` 와 같이, `#` 을 아이디 앞에 반드시 입력해줘야 함.
+- 선택자에는 `#green` 와 같이, `#` 을 아이디 앞에 반드시 입력해줘야 함.
 
 ```css
 <head>
@@ -162,6 +177,87 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 </body>
 ```
 
+
+
+### 복합 선택자
+
+**1) 자손 선택자**	
+
+- 모든 자손들이 선택됨.
+- 아래의 경우, section 태그 안에 있는 모든 ul 태그에 속성이 적용됨.
+
+```css
+section ul {
+    margin: 10px 0;}
+```
+
+**2) 자식 선택자**
+
+- 지정된 자식에게만 속성이 적용됨
+
+```css
+section > ul > li {
+    font-size: 20px;
+    font-weight: bold;
+}
+```
+
+**3) 형제 선택자**
+
+- `a + ul ` : 같은 부모 내, a의 형제 요소 중 바로 뒤 (다음)의 ul에 적용
+- `a ~ ul` : a의 형제 요소 중, a 뒤에 오는 모든 ul에 적용
+
+```css
+a + ul {
+    background-color: gold;}
+a ~ ul {
+    border:  1px solid darkgray;}
+```
+
+**4) 속성 선택자**
+
+- class라는 속성을 가진 ul 태그 중, li 라는 자손 모두에 적용
+
+```css
+ul[class] li {
+    width: 24%;
+    height: 50px;
+    display: inline-block;
+}
+```
+
+- target 속성을 가지며, 그 값이 _self인 a태그에 적용
+
+```css
+a[target="_self"] {
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: white;
+    padding: 5px;
+}
+```
+
+- [속성="값"] 
+
+- [속성~="값"] 
+
+  - alt="바다 사진" / [alt~="바다"]
+
+- [속성|="값"] 
+
+  - alt="바다-사진" / [alt|="바다"]
+
+- [속성^="값"] : 시작하는 값 찾기
+
+  - alt="apple banana" / [alt^="app"] 
+
+- [속성$="값"] : 끝나는 값 찾기
+
+  - href="ssafy.com/istj" / [href$="istj"] 
+
+-  [속성*="값"] : 특정 값만포함하면 선택
+
+  - alt="미세먼지싫어" / [alt*="세먼지"] 
 
 
 ### 선택자의 우선순위
@@ -203,12 +299,19 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 
 
 
-#### CSS에서 색상을 적용하는 방법
+### CSS Colors
 
-1. Color name
-2. Color code
-3. rgb 
-4. rgba : a(alpha)의 범위는 0.0~1.0 으로 값이 작아 질 수록, 색이 투명해짐.
+------
+
+**1) Color name**
+
+**2) Color code**
+
+**3) rgb** 
+
+**4) rgba** 
+
+- a(alpha)의 범위는 0.0~1.0 으로 값이 작아 질 수록, 색이 투명해짐.
 
 ```html
 <head>
@@ -237,7 +340,7 @@ HTML이 웹사이트의 몸체를 담당한다면,  CSS는 옷, 엑세서리와 
 
 
 
-### CSS font-sizes(단위 길이)
+### CSS font-sizes (단위 길이)
 
 ------
 
@@ -257,21 +360,16 @@ https://www.w3schools.com/css/css_units.asp
 
 **2) rem  &  em**
 
-- 단위 길이를 다른 요소들고 비교하여 상대적으로 정함.
+- 단위 길이를 다른 요소들과 비교하여 상대적으로 정함.
 
-- `rem` : Root Element (html)의 폰트사이즈가 기준이 됨.
+- `rem` : Root Element (html)의 폰트 사이즈가 기준이 됨.
+  - 1.2 rem ; 10 px(html)  * 1.2 = 12 px
 
-  - 1.2 rem =>  10 px(html)  * 1.2 = 12 px
-
-- `em` : 상위 Element의 폰트사이즈가 기준이 됨.
-
-  - `<li class="em">저는 1.2em입니다.</li>` 에서, `li < ul < body < head`  순의 상위 Element 로 이동하여 기준 폰트사이즈를 찾음.
-
-  - `ul`의 폰트 사이즈는 `1.2 em`  &  `li`의 폰트 사이즈는 `1.2 em`
-
+- `em` : 상위 Element의 폰트 사이즈가 기준이 됨.
+  - `<li class="em">저는 1.2em입니다.</li>` 에서, `li < ul < body < head`  순의 상위 Element 로 이동하여 기준 폰트사이즈 (html: 10px) 를 찾음. 
+  - 자손 선택자 `ul` &  `li (Ul의 자식 선택자)`의 폰트 사이즈가 각각 `1.2 em`인 것을 알 수 있음.
   - 따라서, 최종적으로 10px(html)  * 1.2(ul)  *  1.2(ul안의 li)  = 14.4 px 
 
-    
 
 ```html
 <!DOCTYPE html>
@@ -332,7 +430,7 @@ https://www.w3schools.com/css/css_units.asp
 
 모든 HTML 요소들은 박스로 간주 할 수 있으며, CSS Box Model은 문서의 design과 layout을 일컫음.  
 
-기본 구성 요소 (https://www.w3schools.com/css/css_boxmodel.asp 참조)
+기본 구성 요소 (참조: https://www.w3schools.com/css/css_boxmodel.asp)
 
 - Content
 
@@ -342,12 +440,12 @@ https://www.w3schools.com/css/css_units.asp
 
 - Border
 
-  
 
 **1)  box-sizing / width / height**
 
 - `box-sizing` : 박스 크기의 기준을 설정할 수 있음. (기본: `content-box` )
-  - 세로 & 가로 길이가 각각 100px 이며, `box-sizing: border-box;` 인 경우, `border-box` 전체의 세로 가로 길이가 100px을 의미한다.
+  - 아래의 경우, 세로 & 가로 길이가 각각 100px 이며,
+  -  `box-sizing: border-box;` 인 경우, `border-box` 전체의 세로 가로 길이가 100px을 의미함.
 - `width & height` : 박스의 너비 & 높이
 
 ```html
@@ -370,7 +468,7 @@ https://www.w3schools.com/css/css_units.asp
 
 - `margin` : border의 바깥쪽 여백
 
-- `padding: 25px` 와 같이, 상/하/좌/우의 여백을 동시에 줄 수 도 있으며,
+- `padding: 25px` 와 같이, 상/하/좌/우의 여백을 동시에 줄 수도 있으며,
 
   `padding-top: 25px` 와 같이, 개별적으로 여백을 적용 할 수 있다.
 
@@ -433,67 +531,223 @@ https://www.w3schools.com/css/css_units.asp
 
 
 
+### CSS Display
 
+------
 
-디스플레이 설정을 하지 않으면 기본적으로 block이 들어감.
+**1) Block-level Elements**
 
-block은 전체 
+- 기본적으로 full width available 을 차지함. (전체 한 라인)
+- 블록 레벨 속성은 항상 새로운 라인에서 시작함.
+- 예) div, h1~h6, p, ol, ul, li, table, form
 
-인라인: 자기자신(컨텐츠)를 담고있는 곳 까지만 박스를 설정
+**2) Inline Elements**
 
-div는 전체 한 라인을 담음(블럭)
+- 자기자신을 담고 있는 곳 까지만 차지함(as much width as necessary)
+- 인라인 속성은 새로운 라인에서 시작하지 않음.
+- 예) span, a, strong, em, img, input
+- *<u>width, height,  margin-top margin-bottom 사용 불가</u>*
 
-span은 인라인 속성을 가짐.
+**3) Visibility & Opacity**
 
+- Visibility: 박스를 보이게 하는 설정(기본값: visible)
+- 값을 hidden으로 적용하면 박스를 안보이게 설정 할 수 있음
+- Opacity: 박스의 투명도. 범위는 0.0~1.0으로 작아질수록 투명해짐
 
+`div` 태그는 블록 레벨 속성을 갖고 있음. 따라서 컨텐츠 만큼만 디스플레이를 설정하기 위해서는 아래와 같이 `display: inline` 으로 의도적으로 변경을 해줘야 한다.
 
-박스가 어떻게 보이는지?
-
-visibility / opacity
-
-
-
-박스를어디에위치할건지?
-
-앱솔루트는 좌표(절대값) 기준으로 화면 내 어디로든 자유롭게 이동 가능.
-
-바디의 좌측 상단이 0,0
-
-(top / left)
-
-
-
-기준점을 변경 & 선택하게 하는 디스플레이 속성?
-
-relative: 다른 박스와 조화되어 움직임.
-
-부모태그를 기준으로 
-
-
-
-fixed: 웹툰 볼때, 몇화인지? 바를 내려도 고정적으로 보이는 부분
-
-
-
-absolute: 이사
-
-relative: 본가 놔두고 이사
-
-
-
-박스간의 앞/뒤로 가기 이동?
-
-z-index;
+```html
+<head>
+    <style>
+        .box2 {
+            display: inline;
+            border: 2px solid red;
+            background-color: gray;
+            visibility: visible;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="box2">
+        이것은 박스 2 입니다.
+    </div>
+    
+</body>
+```
 
 
 
-absolute & fixed: 이사 가버림. 기존 위치는 아애 비워져버리므로. static box가 있는 경우, 순차적으로 그자리를 차지해버림.
+### CSS Position
 
-relative: 본인의 자리를 기준으로 이동. (공간 정리를 하지 않음; 자취방)
+------
+
+The position property specifies the type of positioning method used for an element (static, relative, fixed, absolute or sticky).
+
+- Position: Static / absolute / relative / fixed
+
+- top / bottom / left / right 속성을 이용하여 위치 수정 가능
+
+  예) `top: 50px / left: 50px ` :  테두리 내 기준으로  위에서 부터 50px, 
+
+  ​     왼쪽에서 50px 이동
+
+**각 박스의 위치가 겹치는 경우  `z-index` 속성을 이용하여 우선순위를 설정할 수 있음.* *static은 다른 박스와 상호작용을 못하기 때문에 z-index가 안먹힘*.
 
 
 
-### font
+**1) Static (Default)**
+
+- top / bottom / left/ right 속성등에 영향을 받지 않음
+- 위치는 페이지의 일반적인 흐름에 따라 결정됨. (CSS Position의 기본값)
+
+```css
+.box-static {
+    background-color: gray;
+    border: 2px solid red;
+    width: 100px;
+    height: 100px;}
+```
+
+**2) absolute**
+
+- 좌표(절대값) 기준으로 화면 내 어디로든 자유롭게 이동 가능.
+- 이동할 경우, 기존 위치는 아애 비워져버리므로. static box가 있는 경우, 순차적으로 그자리를 차지해버림. (본가가 이사간다!)
+
+```css
+.box-absolute {
+    position: absolute;
+    background: green;
+    width: 100px;
+    height: 100px;
+    top: 50px;
+    left: 50px;
+    z-index: 1;}
+```
+
+**3) relative**
+
+- Normal position (기존 위치)를 기준으로 이동(상대적 이동)
+- 이동하여도, Normal position은 다른 content에 의해 차지되지 않음.
+- (본가는 그대로 있고, 자취방을 구한다는 개념!)
+
+```css
+.box-relative {
+    position: relative;
+    background: blue;
+    width: 100px;
+    height: 100px;
+    z-index:2;}
+```
+
+**4) fixed**
+
+- 스크롤 바를 내려도 고정적으로 보이는 부분.
+- 이동할 경우, 기존 위치는 아애 비워져버리므로. static box가 있는 경우, 순차적으로 그자리를 차지해버림. (본가가 이사간다!)
+
+```css
+.box-fixed {
+    position: fixed;
+    background: pink;
+    width: 100px;
+    height: 100px;
+    top: 50px;
+    right: 50px;}
+```
+
+**5) 응용**
+
+-  position을 설정한 태그 안에 추가로 태그를 넣음으로써, 기준점(시작점)을 설정 할 수도 있음.
+
+```html
+<body>
+	<div class="small-box" id="green">
+      <div class="small-box" id="purple"></div> 
+        <!-- green 안에 purple -->
+    </div>
+    <div class="small-box" id="blue">
+      <div class="small-box" id="orange"></div> 
+        <!-- blue 안에 orange -->
+	</div>
+</body>
+
+<-- .CSS file -->
+<style>
+#purple {
+  background-color: purple;
+  /* 초록색 기준으로 100 100 만큼 떨어져 있음 */
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
+#orange {
+  background: orange;
+  /* 파란색 기준으로 얼마나 떨어져있는가 */
+  position: absolute;
+  top: -100px;
+  left: 100px;
+}
+</style>
+```
+
+### CSS background
+
+------
+
+CSS background의 속성은 속성에 대한 배경 효과를 설정하는데 사용한다.
+
+The CSS background properties are used to define the background effects for elements.
+
+- `background-color` : 배경 색상 설정
+
+- `background-image ` : 이미지 설정. 예) `url(images/minsu.jpg);` 
+
+- `background-position` : 가로 세로 초점 이동 설정 
+
+   예) `background-position: center center` ​	
+
+- `background-size` : 배경의 크기 설정
+
+  - 직접 수치 입력 (예. 200px 200px)
+  - `contain` : 이미지가 완전히 보이도록 배경 이미지 크기 조정
+  - `cover` : 전체 컨테이너를 덮을 수 있도록 배경 이미지 크기 조정
+
+- `background-repeat` : 배경 이미지 반복 설정
+
+  - no repeat: 반복하지 않음. (이미지는 1번만 표시)
+  - repeat: 가로/세로로 반복. 적합하지 않을 시, 마지막 이미지가 잘림.
+  - initial: 속성을 기본값으로 설정
+
+- `background-attachment` : 배경 이미지 고정 / 스크롤 여부 설정
+
+  - scroll: 배경이미지가 페이지와 함께 스크롤됨 (기본값)
+  - fixed: 배경이미지가 페이지와 함께 스크롤 되지 않음
+
+```css
+div {
+    height: 200px;
+}
+
+.background-color {
+    background-color: blue;
+}
+.background-image {
+    background-image: url(images/minsu.jpg);
+    /* 가로,세로 초점 이동 */
+    /*(left, right, top, bottom, center)*/
+    background-position: center center; 
+    /* contain & 200px 200px & cover */
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* fixed & scroll */
+    background-attachment: fixed;
+}
+```
+
+
+
+### CSS font
 
 ------
 
@@ -505,9 +759,7 @@ relative: 본인의 자리를 기준으로 이동. (공간 정리를 하지 않�
 
 - `font-family` : font 종류를 지정
 
-  - 컴퓨터에 모든 폰트가 들어 있지 않으므로, font-name 중 원하는 폰트를 여러가지 나열하여,
-
-    (font-stack) 마지막에 generic-family를 적어줌.
+  - 컴퓨터에 모든 폰트가 들어 있지 않으므로, font-name 중 원하는 폰트를 여러가지 나열하여, (font-stack) 마지막에 generic-family를 적어줌.
 
   - 이를 통해, 적어도 폰트가 없을 때, 끝에 있는 generic fa,ily에서비슷한 폰트를 브라우저가 찾아서 보여줌.
 
