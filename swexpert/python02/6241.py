@@ -13,12 +13,14 @@ a = ['protocol', 'host' , 'others']
 b = re.split(':|\/',input())
 c = []
 for i in b:
-    if bool(b) == True:
+    if bool(i) == True:
         c.append(i)
     else:
         continue
 
-print(c)
+for k in range(len(a)):
+    print(f'{a[k]}: {c[k]}')
+
 
 
 
