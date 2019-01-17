@@ -254,9 +254,11 @@ a[target="_self"] {
 
   - href="ssafy.com/istj" / [href$="istj"] 
 
--  [속성*="값"] : 특정 값만포함하면 선택
+- [속성*="값"] : 특정 값만포함하면 선택
 
   - alt="미세먼지싫어" / [alt*="세먼지"] 
+
+
 
 
 ### 선택자의 우선순위
@@ -282,6 +284,47 @@ a[target="_self"] {
     
 </body>
 ```
+
+
+
+### 1/17일자 추가 정리 내용
+
+CSS의 선택자는 아래의 우선순위를 가짐.
+
+```HTML
+<body>
+    <div>
+        <h1 id="toffee" class="latte" style="color: green;">아이스 토피넛 라떼</h1>
+    </div>
+</body>
+```
+
+
+
+```CSS
+/* 우선순위가 낮은 것부터 적용 */
+
+/* 6. 상위 객체에 의해 상속된 속성 */
+div {color: red}
+/* 5. 태그 이름으로 지정한 속성 */
+h1 {color: blue;}
+/* 4. 클래스 이름으로 지정한 속성 */
+.latte {color: brown;}
+/* 3. id로 지정한 속성 */
+/* 동일한 레벨의 속성이 열거될 경우는 후자에 온 속성을 적용함 */
+#toffee {color: yellow;}
+#toffee {color: purple;}
+
+/* 2. HTML에서 style을 직접 작성한 속성 */
+/* 1. 속성값 뒤에 !important를 붙인 속성 */
+h1 {color:black !important;}
+```
+
+
+
+
+
+
 
 
 
