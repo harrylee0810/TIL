@@ -140,9 +140,9 @@ def dictionary(word):
 2. `dictionary.get('apple')`  => `사과`  라는 결과 값이 도출 된다.
 3.  따라서, `word`  = `'apple'` , `result` = `'사과'` 로  입력이 됨.
 
-최종적으로 `return` 이하를 formatting을 이용하여 `f'{word}은(는) {result}!'`  로 작성해줄 경우,  웹페이지에는 아래와 같은 화면이 출력된다.
+최종적으로 `return` 이하를 formatting을 이용하여 `f'{word}은(는) {result}!'`  로 작성해줄 경우,  정상적으로 웹페이지가 출력 된다.
 
-![1547206801622](C:\Users\harry\AppData\Roaming\Typora\typora-user-images\1547206801622.png)
+
 
 #### get 메소드를 사용한 이유?
 
@@ -165,7 +165,5 @@ dictionary.['apple']
 result = dictionary.get(word,'나만의 단어장에 없는 단어입니다')
 ```
 
-![1547207621103](C:\Users\harry\AppData\Roaming\Typora\typora-user-images\1547207621103.png)
 
-aaa
 
