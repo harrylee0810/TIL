@@ -28,7 +28,7 @@ def hello():
 #### Easy to Setup
 
 - `pip install Flask` : Flask를 설치하는 명령어 (Git Bash에 입력)
-- `FLASK_APP=hello.py flask run` : 웹 서버 실행
+- `` : 웹 서버 실행
 - `http://127.0.0.1:5000/`를 `ctrl + Click` 하여 웹서버를 실행하면 됨.
 
 - `http://127.0.0.1:5000/` 는 Flask의 기본 주소.
