@@ -1,16 +1,16 @@
 # 1부터 N까지의 숫자에서 홀수는 더하고 짝수는 뺐을 때 최종 누적된 값을 구해보자.
 # N은 1 이상 10 이하의 정수이다. (1 ≤ N ≤ 10)
 
-
-a = int(input())
-result = ''
-for i in range(1,a+1):
-    if i % 2:
-        result = result + '+' + str(i)
-    else:
-        result = result + str(-i)
-print(result)
-
+base = int(input())
+for k in range(base):
+    a = int(input())
+    result = 0
+    for i in range(1,a+1):
+        if i % 2:
+            result += i
+        else:
+            result -= i
+    print(f'#{k+1} {result}')
 
 
 
