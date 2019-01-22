@@ -7,32 +7,54 @@
 # 가로, 세로 각각에 대해서 직선으로만 판단한다.
 # 즉, 아래 예에서 노란색 경로를 따라가면 길이 7짜리 회문이 되지만 직선이 아니기 때문에 인정되지 않는다.
 
-n_palin = int(input())
+for z in range(1,11):
+    n_palin = int(input())
+    count1 = 0
+    total_lst1 = []
+    for j in range(8):
+        a = input()
+        total_lst1.append(a)
+        for i in range(len(a)-n_palin+1):
+            if a[i:n_palin+i] == a[i:n_palin+i][::-1]: 
+                count1 +=1
 
-count1 = 0
-total_lst1 = []
-sub_lst1 = []
-for i in range(8):
-    a = input()
-    sub_lst1.append(a)
-    total_lst1.append(sub_lst1)
-    sub_lst1 = []  
-    for i in range(int(len(a)/2)+1):
-        if a[i:n_palin+i] == a[i:n_palin+i][::-1]: 
-            count1 +=1
-            
+    total_lst2=[]
+    sub_lst2=''
+    for l in range(8):
+        for k in total_lst1:
+            sub_lst2 += k[l]
+        total_lst2.append(sub_lst2)
+        sub_lst2=''
 
-print(count1)
-print(total_lst1)
+    for m in total_lst2:
+        for n in range(len(m)-n_palin+1):
+            if m[n:n_palin+n] == m[n:n_palin+n][::-1]:
+                count1 +=1
 
+    print(f'#{z} {count1}')
+
+# for i in range(1,11):
+#     e=int(input())
+#     p=[input() for i in range(8)]
+#     s=[''.join(k) for k in list(zip(*p))]
+#     c=0
+#     for x in [p,s]:
+#         for x in x:
+#             for j in range(9-e):
+#                 if x[j:j+e]==x[j:j+e][::-1]:
+#                     c+=1
+#     print(f'#{i} {c}')
 
 
 #  C   B   B   C   B   A   A   B
 #  0   1   2   3   4   5   6   7
 # -8  -7  -6  -5  -4  -3  -2   -1
 
-# [0:4] == [-4:-8]
-# [1:5] == [-7:-3]
-# [2:6] == [-6:-2]
-# [3:7] == [-5:-1]
-# [4:8]
+#회문3    4    5     6     7
+# [0:3] [0:4] [0:5] [0:6] [0:7]
+# [1:4] [1:5] [1:6] [1:7] [1:8]
+# [2:5] [2:6] [2:7] [2:8]
+# [3:6] [3:7] [3:8]
+# [4:7] [4:8] 
+# [5:8]      
+#  6번  5번   4번    3번   2번  
