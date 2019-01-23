@@ -1,6 +1,8 @@
-# 데이터 베이스(DB)
+# Database
 
-## Introduction
+[TOC]
+
+## Introduction 
 
 **데이터베이스란?** 
 
@@ -10,13 +12,13 @@ SQL언어로 조작을 할 수 있는 체계화된 데이터의 모임.
 
 > 여러 사람에 의해 공유되어 사용될 목적으로 통합하여 관리되는 데이터의 집합을 말하는 개념이다. 줄여서 DB라고도 하며, 특정 다수의 이용자들에게 필요한 정보를 제공한다든지 조직 내에서 필요로 하는 정보를 체계적으로 축적하여 그 조직 내의 이용자에게 필요한 정보를 제공하는 정보 서비스 기관의 심장부에 해당된다.
 
-
-
 **SQLite**
 
 서버가 아닌 응용 프로그램에 넣어 사용하는 비교적 가벼운 데이터베이스이다. 구글 안드로이드 운영체제에 기본적으로 탑재댄 데이터베이스이며 임베디드 소프트웨어에도 많이 활용되고 있다. 로컬에서 간단한 DB 구성을 할 수 있으며, 오픈소스 프로젝트이므로 자유롭게 사용이 가능하다.
 
 
+
+### 기본 용어 정리
 
 **스키마(scheme/schema)**
 
@@ -24,9 +26,7 @@ SQL언어로 조작을 할 수 있는 체계화된 데이터의 모임.
 
 
 
-**데이터베이스의 구조**
-
-테이블
+**테이블**
 
 - 열(column): 각 열에는 고유한 데이터 형식이 지정된다. Integer, text, null 등
 
@@ -36,24 +36,23 @@ SQL언어로 조작을 할 수 있는 체계화된 데이터의 모임.
 
 
 
+### SQL의 개념
 
-**SQL**
-
-SQL(Structured Query Langauage)는 관계형 데이터 베이스 관리 시스템의 데이터를 관리하기 위해 설계뙨 특수 목적의 프로그래밍 언어이다.RDBMS에서 자료의 검색과 관리, DB의 스키마 생성과 수정......
+SQL(Structured Query Langauage)는 관계형 데이터 베이스 관리 시스템의 데이터를 관리하기 위해 설계된 특수 목적의 프로그래밍 언어이다.RDBMS에서 자료의 검색과 관리, DB의 스키마 생성과 수정, 데이터벵스 객체 접근 조정 관리를 위해 고안되었다.
 
 
 
 **SQL의 문법**
 
-데이터 정의 언어(DDL): 데이터를 정의하기 위한 언어. 관계형 데이터베이스 구조(테이블, 스키마)를 정의하기 위한 명령어. ex) CREATE, DROP, ALTER
+| 언어                  | 정의                                                         | 예시                            |
+| --------------------- | ------------------------------------------------------------ | ------------------------------- |
+| 데이터 정의 언어(DDL) | 데이터를 정의하기 위한 언어. 관계형 데이터베이스 구조(테이블, 스키마)를 정의하기 위한 명령어. | CREATE, DROP, ALTER             |
+| 데이터 조작 언어(DML) | 데이터를 저장, 수정 삭제, 조회등을 하기 위한 언어            | INSTER, UPDATE, DELETE, SELECT  |
+| 데이터 제어 언어(DCL) | 데이터 베이스 사용자의 권한 제어를 위한 사용되는 언어        | GRANT, REVOKE, COMMIT, ROCKBACK |
 
-데이터 조작 언어(DML): 데이터를 저장, 수정 삭제, 조회등을 하기 위한 언어 ex) INSTER, UPDATE, DELETE, SELECT
-
-데이터 제어 언어(DCL): 데이터 베이스 사용자의 권한 제어를 위한 사용되는 언어 ex) GRANT, REVOKE, COMMIT, ROCKBACK
 
 
-
-## C9에서 SQLite 작동하기
+## C9에서 SQLite 조작하기
 
 **SQLite 실행 및 SELECT문 실행하기**
 
@@ -64,8 +63,7 @@ harrylee0810:~/workspace/flask/sql $ sqlite3
 #실행하면, 다음과 같은 코드가 실행된다.
 SQLite version 3.8.2 2013-12-06 14:53:30
 Enter ".help" for instructions
-Enter SQL statements terminated with a ";"
-sqlite> 
+Enter SQL statements terminated with a ";" 
 
 #examples라는 테이블을 생성
 sqlite> .mode csv
@@ -110,8 +108,6 @@ seq  name             file
 
 
 
-### 1. 데이터 생성
-
 **Table 생성**
 
 ```sqlite
@@ -122,7 +118,7 @@ column2 datatype
 );
 ```
 
-예) classmate라는 테이블을 생성해보자!
+실습문제) classmate라는 테이블을 생성해보자!
 
 ```sqlite
 sqlite> CREATE TABLE classmates (
@@ -133,7 +129,7 @@ sqlite> .tables
 classmates
 ```
 
-sql의 구조는 개행문자를 인식하지 않음. `;` 를 입력해야 명령어가 종료됨. 그렇지 않을경우, 엔터를 처도 한줄로 인식함
+sql의 구조는 개행문자를 인식하지 않음. `;` 를 입력해야 명령어가 종료됨. otherwise, 엔터를 처도 한줄로 인식함
 
 
 
@@ -189,9 +185,7 @@ sqlite> DROP TABLE classmates;
 sqlite> .tables
 ```
 
-
-
-ctrl+L` : sql 터미널 정리하기
+`ctrl+L` : sql 터미널 정리하기
 
 
 
@@ -210,7 +204,9 @@ classmates
 
 
 
-### 2. 데이터 추가, 읽기
+## CRUD
+
+### 1. 데이터 생성 (Create)
 
 **data 추가(INSERT)**
 
@@ -223,7 +219,7 @@ VALUES(value1, value2, ...)
 
 
 
-실습문제)  classmates 테이블에 이름이 홍길동이고, 나이가 23인 데이터를 넣어봅시다. 그리고 SELECT문을 통해 확인해보세요 :)
+실습문제)  classmates 테이블에 이름은  홍길동, 나이는  23인 데이터를 넣어보고 SELECT문으로 확인해보자.
 
 ```sqlite
 sqlite> INSERT INTO classmates(name, age)
@@ -252,6 +248,8 @@ id          name        age         address
 
 
 위의 구조가 괜찮은가? 첫번째 필드의 주소가 비어있는걸 알 수 있음. 따라서, 컬럼이 공백이 되지 않게 수정해보자
+
+
 
 **TALBE 설정 변경**
 
@@ -286,6 +284,10 @@ id          name        age         address
 
 id 값을 VALUE를 넣을경우 에러가 발생한다!
 
+
+
+### 2. 데이터 읽기 (Read)
+
 **data가져오기(SELECT)**
 
 전체 데이터 갖고 오기
@@ -304,14 +306,6 @@ id          name
 2           홍길동 
 3           홍길동 
 4           진민재 
-5           권민재 
-6           이현수 
-7           서민호 
-8           이규진 
-9           강대현 
-10          송현우 
-11          양도혁 
-12          이지현 
 ```
 
 특정한 table에서 원하는 column의 데이터만 갖고오는데, 위에서부터 2개만 갖고오기!
@@ -341,8 +335,6 @@ id          name
 SELECT 컬럼명 FROM 테이블명 WHERE column=value
 ```
 
-
-
 주소가 대구인 학생에 대한 데이터만 갖고오기
 
 ```sqlite
@@ -357,66 +349,7 @@ id          name
 
 
 
-### 3. 데이터 삭제, 수정
-
-**데이터 삭제(DELETE)**
-
-특정한 table에 특정한 레코드를 삭제 할 수 있습니다.
-
-```sqlite
-DELETE FROM 테이블명 WHERE 조건문
-```
-
-
-
-실습문제) 중복이 불가능한 값인 id(Unique한) 를 기준으로 id가 3번인 데이터를 삭제해보자
-
-```sqlite
-sqlite> DELETE FROM classmates WHERE id=3;
-sqlite> SELECT * FROM classmates;                                                             
-id          name        age         address   
-----------  ----------  ----------  ----------
-1           홍길동   50          구미    
-2           홍길동   50          구미    
-4           진민재   28          고령    
-5           권민재   27          수원    
-6           이현수   30          부산    
-7           서민호   26          구미    
-8           이규진   29          대구    
-9           강대현   28          대구    
-10          송현우   28          대구    
-11          양도혁   27          대구    
-12          이지현   24          옥계 
-```
-
-
-
-AUTOINCREMENT 속성을 통해 자동으로 id값을 입력하였음. 그런데 위의 예시처럼 id값이 3인경우에 데이터를 추가한다면? 
-
-아래와 같이, id = 3은 비워두고, 밑에서 채워나가는 형태가 만듦어짐
-
-```sqlite
-sqlite> INSERT INTO classmates (name, age, address) VALUES ('조영현',24,'구미');                            
-sqlite> SELECT * FROM classmates;
-id          name        age         address   
-----------  ----------  ----------  ----------
-1           홍길동   50          구미    
-2           홍길동   50          구미    
-4           진민재   28          고령    
-5           권민재   27          수원    
-6           이현수   30          부산    
-7           서민호   26          구미    
-8           이규진   29          대구    
-9           강대현   28          대구    
-10          송현우   28          대구    
-11          양도혁   27          대구    
-12          이지현   24          옥계    
-13          조영현   24          구미   
-```
-
-
-
-**데이터 수정(UPDATE)**
+### 3. 데이터 수정 (Update)
 
 특정한 table에 특정한 레코드를 수정할 수 있습니다.
 
@@ -439,23 +372,61 @@ id          name        age         address
 2           홍길동   50          구미    
 4           홍길동   28          제주도 
 5           권민재   27          수원    
-6           이현수   30          부산    
-7           서민호   26          구미    
-8           이규진   29          대구    
-9           강대현   28          대구    
-10          송현우   28          대구    
-11          양도혁   27          대구    
+...   
 12          이지현   24          옥계    
 13          조영현   24          구미    
 ```
 
 
 
-데이터 추가, 읽기, 수정, 삭제 정리
+### 4. 데이터 삭제 (Delete)
+
+특정한 table에 특정한 레코드를 삭제 할 수 있습니다.
+
+```sqlite
+DELETE FROM 테이블명 WHERE 조건문
+```
 
 
 
-### 4. WHERE, expression
+실습문제) 중복이 불가능한 값인 id(Unique한) 를 기준으로 id가 3번인 데이터를 삭제해보자
+
+```sqlite
+sqlite> DELETE FROM classmates WHERE id=3;
+sqlite> SELECT * FROM classmates;                                                             
+id          name        age         address   
+----------  ----------  ----------  ----------
+1           홍길동   50          구미    
+2           홍길동   50          구미    
+4           진민재   28          고령    
+5           권민재   27          수원    
+6           이현수   30          부산    
+7           서민호   26          구미    
+```
+
+
+
+AUTOINCREMENT 속성을 통해 자동으로 id값을 입력하였음. 그런데 위의 예시처럼 id값이 3인경우에 데이터를 추가한다면? 
+
+아래와 같이, id = 3은 비워두고, 밑에서 채워나가는 형태가 만듦어짐
+
+```sqlite
+sqlite> INSERT INTO classmates (name, age, address) VALUES ('조영현',24,'구미');      
+sqlite> SELECT * FROM classmates;
+id          name        age         address   
+----------  ----------  ----------  ----------
+1           홍길동   50          구미    
+2           홍길동   50          구미    
+4           진민재   28          고령    
+5           권민재   27          수원    
+....
+12          이지현   24          옥계    
+13          조영현   24          구미   
+```
+
+
+
+### 5. WHERE, expression
 
 csv 파일을 임포트 해오자.
 
@@ -490,15 +461,6 @@ sqlite> CREATE TABLE users (
    ...> balance INT NOT NULL
    ...> );
 sqlite> .schema users
-CREATE TABLE users (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-first_name TEXT NOT NULL,
-last_name TEXT NOT NULL,
-age INT NOT NULL,
-country TEXT NOT NULL,
-phone TEXT NOT NULL,
-balance INT NOT NULL
-);
 ```
 
 
@@ -511,30 +473,11 @@ users에서 age가 30이상인 사람만 가져온다면?
 sqlite> SELECT * FROM users WHERE age>=30;
 ```
 
-
-
 users에서 age가 30이상이고 성이 김인 사람의 성과 나이만 가져온다면?
 
 ```sqlite
 sqlite> SELECT age, last_name FROM users WHERE age>=30 and last_name="김";
 ```
-
-
-
-**Expression**
-
-다음 표현은 레코드의 갯수를 반환합니다.
-
-```sqlite
-sqlite> SELECT count(*) FROM users;
-COUNT(*)  
-----------
-1001      
-```
-
-다음 표현식은 기본적으로 숫자(INTEGER)일때만  가능하다.
-
-
 
 users에서 계좌 잔액(balance)이 가장 높은 사람과 액수는?
 
@@ -565,18 +508,31 @@ sqlite> SELECT * FROM users WHERE age LIKE '2%';
 
 LIKE는 패턴을 찾아서 값을 비교해서 찾음.
 
-
-
 **WHERE column LIKE ‘’**
 
-| 형태  | 설명                                         |
-| ----- | -------------------------------------------- |
-| 2%    | 2로 시작하는 값                              |
-| %2:   | 2로 끝나는 값                                |
-| %2%   | 2가 들어가는 값                              |
-| _2%   | 아무값이나 들어가고 두번쨰가 2로 시작하는 값 |
-| 1__   | 1로 시작하고 4자리인 값                      |
-| 2_%_% | 2로 시작하고적어도 3자리인 값                |
+| 형태   | 설명                                         |
+| ------ | -------------------------------------------- |
+| 2%     | 2로 시작하는 값                              |
+| %2     | 2로 끝나는 값                                |
+| %2%    | 2가 들어가는 값                              |
+| _2%    | 아무값이나 들어가고 두번째가 2로 시작하는 값 |
+| 1__    | 1로 시작하고 4자리인 값                      |
+| 2\_%_% | 2로 시작하고적어도 3자리인 값                |
+
+
+
+**Expression**
+
+다음 표현은 레코드의 갯수를 반환합니다.
+
+```sqlite
+sqlite> SELECT count(*) FROM users;
+COUNT(*)  
+----------
+1001      
+```
+
+다음 표현식은 기본적으로 숫자(INTEGER)일때만  가능하다.
 
 
 
@@ -603,4 +559,6 @@ sqlite> SELECT first_name, last_name FROM users ORDER BY balance DESC LIMIT 10;
 
 
 SQL을 파이썬과 연동하여 어떻게 사용할지?
+
+
 

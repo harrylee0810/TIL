@@ -7,36 +7,45 @@
 # 가로, 세로 각각에 대해서 직선으로만 판단한다.
 # 즉, 아래 예에서 노란색 경로를 따라가면 길이 7짜리 회문이 되지만 직선이 아니기 때문에 인정되지 않는다.
 
-for z in range(1,11):
-    n_palin = int(input())
-    count1 = 0
-    total_lst1 = []
-    for j in range(8):
-        a = input()
-        total_lst1.append(a)
-        for i in range(len(a)-n_palin+1):
-            if a[i:n_palin+i] == a[i:n_palin+i][::-1]: 
-                count1 +=1
+# for z in range(1,11):
+#     n_palin = int(input())
+#     count1 = 0
+#     total_lst1 = []
+#     for j in range(8):
+#         a = input()
+#         total_lst1.append(a)
+#         for i in range(len(a)-n_palin+1):
+#             if a[i:n_palin+i] == a[i:n_palin+i][::-1]: 
+#                 count1 +=1
 
-    total_lst2=[]
-    sub_lst2=''
-    for l in range(8):
-        for k in total_lst1:
-            sub_lst2 += k[l]
-        total_lst2.append(sub_lst2)
-        sub_lst2=''
+#     total_lst2=[]
+#     sub_lst2=''
+#     for l in range(8):
+#         for k in total_lst1:
+#             sub_lst2 += k[l]
+#         total_lst2.append(sub_lst2)
+#         sub_lst2=''
 
-    for m in total_lst2:
-        for n in range(len(m)-n_palin+1):
-            if m[n:n_palin+n] == m[n:n_palin+n][::-1]:
-                count1 +=1
+#     for m in total_lst2:
+#         for n in range(len(m)-n_palin+1):
+#             if m[n:n_palin+n] == m[n:n_palin+n][::-1]:
+#                 count1 +=1
 
-    print(f'#{z} {count1}')
+#     print(f'#{z} {count1}')
+
+e=int(input())
+p=[input() for i in range(8)]
+print(p)
+s = [''.join(k) for k in list(zip(*p))]
+print(s)
+
 
 # for i in range(1,11):
 #     e=int(input())
 #     p=[input() for i in range(8)]
+#     print(p)
 #     s=[''.join(k) for k in list(zip(*p))]
+#     print(s)
 #     c=0
 #     for x in [p,s]:
 #         for x in x:
