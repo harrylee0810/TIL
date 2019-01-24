@@ -1,4 +1,10 @@
+[TOC]
+
+
+
 # CSS Framework
+
+## Introduction
 
 까다로운 CSS 레이아웃을 손쉽게 만들어주는 소프트웨어 프레임 워크
 
@@ -10,7 +16,7 @@ CDN를 통해 Bootstrap에 작성된 CSS, JS를 활용하자!
 
 
 
-## CDN
+### 1. CDN
 
 **CDN: Content Deliver(Distribution) Network**
 
@@ -30,7 +36,7 @@ cf) Reboot / Reset CSS / normalize CSS
 
 
 
-### Bootstrap 기본 설정
+### 2. Bootstrap 기본 설정
 
 Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 아래의 코드를 적용
 
@@ -55,7 +61,7 @@ Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 
 
 ## Utilities
 
-### spacing
+### 1. spacing
 
 - margin과 padding 등 여백과 공간을 설정
 
@@ -102,7 +108,7 @@ Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 
 
 
 
-### Color
+### 2. Color
 
 - 텍스트 및 배경의 색상을 설정 (https://getbootstrap.com/docs/4.2/utilities/colors/)
 
@@ -131,7 +137,7 @@ Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 
 
 
 
-### border
+### 3. border
 
 ```html
 <body>
@@ -150,9 +156,7 @@ Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 
 
 
 
-
-
-### Display
+### 4. Display
 
 ```html
 <body>
@@ -181,7 +185,7 @@ Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 
 
 
 
-### Position
+### 5. Position
 
 ```html
 <body>
@@ -201,7 +205,7 @@ Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 
 
 
 
-### Text/Font
+### 6. Text/Font
 
 ```html
 <body>
@@ -224,7 +228,7 @@ Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 
 
 
 
-### Layout
+### 7. Layout
 
 - container: 기본으로 깔고 가는 bootstrap의 basic layout element
 - 기본적으로 양쪽 끝에 공백이 있음.
@@ -238,7 +242,7 @@ Bootstrap의 CSS와 자바스크립트(JS)를 CDN을 통해 활용하기 위해 
 
 
 
-### Grid System
+### 8. Grid System
 
 - 일련의 컨테이너, 행 및 열을 사용하여 내용을 정렬하고 구성하는 시스템.
 
@@ -349,9 +353,211 @@ Bootstrap의 breakpoint*
 
 
 
+### 9. Flex
+
+Flexbox Layout은, 새롭게 CSS3 명세에 반영된 레이아웃 모듈로서, 요소들이 수용된 공간을 어떻게 효과적으로 채워나갈지에 대한 아이디어에서 시작된 새로운 레이아웃 방식 
+
+(어떠한 박스가 있을 때, 박스들을 어떻게 정렬/배치 할지? )
+
+Flexbox는 유연한 요소( `item` ), 그리고 그요소를 담을 그릇(`container` )으로 이루어짐. 그릇과 내용물 모두에게 이것이 Flexbox라는 일종의 고유한 선언을 해줘야함.
+
+![](https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/llflex1-01.png)
+
+
+
+Flex 관련 reference
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+http://www.beautifulcss.com/archives/1263
+
+http://flexboxfroggy.com/#ko
+
+
+
+**Flex의 속성**
+
+------
+
+**display**
+
+그릇에 해당하는 부모 요소(이하,  container라 칭함)에 `display: flex` 혹은 `display: inline-flex` 로 flexbox임을 선언 할 수 있음.
+
+```css
+.container { display: flex }
+```
+
+
+
+**justify-content**
+
+Flex의 요소를 가로선상에서 정렬
+
+- `flex-start` : 요소들을 컨테이너의 왼쪽으로 정렬
+- `flex-end` : 요소들을 컨테이너의 오른쪽으로 정렬
+- `center` : 요소들을 컨테이너의 가운데로 정렬
+- `space-between` : 요소들 사이에 동일한 간격 삽입
+- `space-around` : 요소들 주위에 동일한 간격 삽입
+
+```css
+#pond {
+	display: flex;
+    justify-content: flex-start
+}
+```
+
+![](https://images.thoughtbot.com/cp-design-for-the-web/rJPfdQBaR1toJmmH87ao_layout-justify-content.png)
+
+**align-items**
+
+Flex의 요소를 세로선상에서 정렬
+
+- `flex-start` : 요소들을 컨테이너의 꼭대기로 정렬
+- `flex-end` : 요소들을 컨테이너의 바닥으로 정렬
+- `center` : 요소들을 컨테이너의 가운데로 정렬
+- `baseline` : 요소들을 컨테이너의 시작 위치에 정렬
+- `stretch` : 요소들을 컨테이너에 맞도록 늘림
+
+```css
+#pond {
+	display: flex;
+    align-items: flex-end;
+}
+```
+
+
+
+![](https://images.thoughtbot.com/cp-design-for-the-web/SOtxyVsFR5uFGQAps9wW_layout-align-content.png)
+
+**flex-direction**
+
+Flex의 요소들이 정렬할 방향 지정
+
+- `row` : 요소들을 텍스트의 방향과 동일하게 정렬
+- `row-reverse` : 요소들을 텍스트의 반대 방향으로 정렬
+- `column` : 요소들을 위에서 아래로 정렬
+- `column-reverse` : 요소들을 아래에서 위로 정렬
+
+```css
+#pond {
+	display: flex;
+    flex-direction: row-reverse;
+}
+```
+
+![](https://images.thoughtbot.com/cp-design-for-the-web/MwnTUG5TBaJHUM7hnMaw_layout-flex-direction.png)
+
+
+
+**order**
+
+flex요소의 순서를 지정  기본 값은 0이며 양수나 음수로 변경 가능
+
+```css
+#pond {
+    display: flex;
+}
+.yellow {
+    order:1 
+}
+```
+
+
+
+**align-self**
+
+flex 내 개별 요소에 적용할 수 있는 또 다른 속성.
+
+이 속성은 align-items가 사용하는 값들을 인자로 받으며, 그 값들은 지정한 요소에만 적용됨.
+
+- `flex-start` : 특정 요소를 컨테이너의 꼭대기로 정렬
+- `flex-end` : 특정 요소를 컨테이너의 바닥으로 정렬
+- `center` : 특정 요소를 컨테이너의 가운데로 정렬
+- `baseline` : 특정 요소를 컨테이너의 시작 위치에 정렬
+- `stretch` : 특정 요소를 컨테이너에 맞도록 늘림
+
+```css
+#pond {
+	display: flex;
+    align-items: flex-start;
+}
+.yellow {
+    align-self: flex-end 
+}
+```
+
+
+
+**flex-wrap**
+
+flex요소를 한줄 또는 여러줄에 걸쳐 정렬
+
+- `nowrap` : 모든요소를 한줄에 정렬
+- `wrap` : 요소들을 여러줄에 걸쳐 정렬
+- `wrap-reverse` : 요소들을 여러줄에 걸쳐 반대로 정렬 (오른쪽 하단부터...)
+
+```css
+#pond {
+	display: flex;
+    flex-wrap: wrap;
+}
+```
+
+![](https://images.thoughtbot.com/cp-design-for-the-web/Flonm9P5TgSzWVtiqFyR_layout-flex-wrap.png)
+
+
+
+**flex-flow**
+
+빈번히 사용되는flex-direction 과 flex-wrap을 축약하여 사용
+
+```css
+#pond {
+	display: flex;
+    flex-flow: column wrap;
+}
+```
+
+
+
+**align-content**
+
+여러 줄 사이의 간격을 지정
+
+- `flex-start`: 여러 줄들을 컨테이너의 꼭대기에 정렬
+- `flex-end`: 여러 줄들을 컨테이너의 바닥에 정렬
+- `center`: 여러 줄들을 세로선 상의 가운데에 정렬
+- `space-between`: 여러 줄들 사이에 동일한 간격 적용
+- `space-around`: 여러 줄들 주위에 동일한 간격 적용
+- `stretch`: 여러 줄들을 컨테이너에 맞도록 늘림
+
+이 속성을 사용하는 방법이 어려울 수 있습니다. `align-content`는 여러 줄들 사이의 간격을 지정하며, `align-items`는 컨테이너 안에서 어떻게 모든 요소들이 정렬하는지를 지정합니다. 한 줄만 있는 경우, `align-content`는 효과를 보이지 않습니다.
+
+```css
+#pond {
+	display: flex;
+    flex-wrap: wrap;
+	align-content: flex-start
+}
+```
+
+![](https://images.thoughtbot.com/cp-design-for-the-web/9IoOcGARiqjCjtCGARkw_layout-align-items.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Component
 
-### Alerts
+### 1. Alerts
 
 - bootstrap에서 제공하는 기본적인 박스. 블록 속성을 가짐.
 - 배경,테두리,글자 색을 추가로 적용 할 수 있음.
@@ -368,7 +574,7 @@ Bootstrap의 breakpoint*
 
 
 
-### Badge
+### 2. Badge
 
 - Alert와 달리, Inline-block 속성을 적용하고 싶은 단어에 적용
 
@@ -388,7 +594,7 @@ Bootstrap의 breakpoint*
 
 
 
-### Buttons
+### 3. Buttons
 
 ```html
 <!--Default: 배경에 색이 적용되어 있음 -->
@@ -440,7 +646,7 @@ Bootstrap의 breakpoint*
 
 
 
-### Card
+### 4. Card
 
 ```html
 <div class="container">
@@ -463,7 +669,7 @@ Bootstrap의 breakpoint*
 
 ![카드](https://i.ytimg.com/vi/2qQxwT-Qm5E/maxresdefault.jpg)
 
-### Carousel - With indicators
+### 5. Carousel - With indicators
 
 ```html
 <!-- carousel: 슬라이드 형태로 사진을 넘기는 기능 -->
@@ -502,7 +708,7 @@ Bootstrap의 breakpoint*
 
 
 
-### collapse
+### 6. collapse
 
 - ​컨텐츠를 숨기고 보이는 플러그인.
 
@@ -527,7 +733,7 @@ Bootstrap의 breakpoint*
 
 
 
-### Forms
+### 7. Forms
 
 - 아이디 / 패스워드 로그인 창과 같은 Form을 생성.
 
@@ -554,13 +760,13 @@ Bootstrap의 breakpoint*
 
 
 
-### Input group
+### 8. Input group
 
 - input들의 묶음 예) button + input tag
 
 
 
-### Media object
+### 9. Media object
 
 ```html
 <div class="media">
@@ -576,7 +782,7 @@ Bootstrap의 breakpoint*
 
 ![media object](https://www.codevscolor.com/wp-content/uploads/bootstrap-media-object-1.png)
 
-### Modal
+### 10. Modal
 
 ```html
 <!-- Button trigger modal -->
@@ -612,7 +818,7 @@ Bootstrap의 breakpoint*
 
 
 
-### Progress
+### 11. Progress
 
 ```html
 <div class="progress">
@@ -627,7 +833,7 @@ Bootstrap의 breakpoint*
 
 
 
-### Spinners
+### 12. Spinners
 
 - `<span class="sr-only">Loading...</span>` 부분을 빼도 정상적으로 작동을 함. 
 
@@ -655,7 +861,7 @@ https://bootstrapcreative.com/resources/bootstrap-4-css-classes-index/
 
 
 
-### Navbar
+### 13. Navbar
 
 - 웹 페이지의 상단에 Navigation을 만드는 기능
 
@@ -704,7 +910,7 @@ https://bootstrapcreative.com/resources/bootstrap-4-css-classes-index/
 
 
 
-### Pagination
+### 14. Pagination
 
 - 페이지 이동/넘기기 버튼 적용
 
@@ -741,5 +947,42 @@ https://bootstrapcreative.com/resources/bootstrap-4-css-classes-index/
 
 
 
+## break point
 
+Bootstrap의 break point를 활용하여 view port의 width에 따라 컬럼 갯수를 다르게 설정할 수 있음.
+
+- 576px보다 작을 때: col-12 조건 적용 => 한줄에 12칸을 차지하는 박스 생성 (총 12줄)
+- 576px보다 클때: col-sm-6 조건 적용 => 한줄에 6칸을 차지하는 박스 생성 (총 6줄)
+- 768px보다 클때: col-md-4 조건 적용 => 한줄에 4칸을 차지하는 박스 생성 (총 4줄)
+- 992px보다 클때: col-lg-3 조건 적용 => 한줄에 3칸을 차지하는 박스 생성 (총 3줄)
+- 1200px 보다 클때: col-xl-2 조건 적용 => 한줄에 2칸을 차지하는 박스 생성 (총 2줄)
+
+상기 조건을 활용하여, view point에 따라 박스를 숨기는 등의 추가적인 속성도 적용 가능
+
+- view port가 small(576px ~ 768px) 일 경우, 마지막 박스는 숨겨짐
+
+```css
+<div class="container">
+    <div class="row">
+        <div class="d-sm-none col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">01</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">02</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">03</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">04</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">05</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">06</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">07</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">08</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">09</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">10</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">11</div>
+        <div class="d-sm-none col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">12</div>
+    </div>
+</div>
+```
+
+
+
+*Bootstrap의 breakpoint*
+
+> ![breakpoint](https://wpmaster.com/wp-content/uploads/2017/02/bootstrap-4-grid.jpg)
 

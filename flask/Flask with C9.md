@@ -324,7 +324,7 @@ def send():
 
 `http://playground-harrylee0810.c9users.io:8080/receive?who=MJ+&message=gobowling%3F`
 
-#### 
+
 
 #### **파일 조작 2-1: 응답을 받을 HTML 파일 생성**
 
