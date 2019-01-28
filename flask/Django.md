@@ -175,7 +175,7 @@ intro.settings와 같이 `.` 으로 타고 들어갈 수 있게 해주는 파일
 
 **3-1) 어플리케이션 기본 설정**
 
-어플리케이션을 생성하면,  어플리케이션을 생성했다는 것을 django 에게 알려서 등록을 해야함.  앱의 정보는 apps.py (pages 라는 어플명의 폴더 안에 위치)에 저장되어있으며, 해당 파일 안의 클래스 명인 Pages.Config를  settings.py에 등록해아함.
+어플리케이션을 생성하면,  어플리케이션을 생성했다는 것을 django 에게 알려서 등록을 해야함.  앱의 정보는 apps.py (pages 라는 어플명의 폴더 안에 위치)에 저장되어있으며, 해당 파일 안의 클래스 명인 Pages.Config를  settings.py에 등록해아함. `[어플리케이션명].apps.[클래스명]`
 
 ```python
 #apps.py
@@ -186,6 +186,7 @@ class PagesConfig(AppConfig):
 
 #settings.py의 33rd line
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
