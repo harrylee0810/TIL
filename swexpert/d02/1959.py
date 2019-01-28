@@ -19,28 +19,25 @@
 # aj > bj 큰경우
 # 아닌경우
 
-result = 0
-sub_result = 0
+i_cnt = int(input())
 
-len_a, len_b = map(int, input().split())
-gap = abs(len_a - len_b)
+for j in range(1,i_cnt+1):
+    result = 0
+    sub_result = 0
 
-a = list(map(int, input().split()))
-b = list(map(int, input().split()))
-result = sum([x*y for x,y in zip(a,b)])
+    len_a, len_b = map(int, input().split())
+    gap = abs(len_a - len_b)+1
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = sum([x*y for x,y in zip(a,b)])
 
-for i in range(gap):
-    a.insert(0,0)
-    sub_result = sum([x*y for x,y in zip(a,b)])
-    if sub_result > result:
-        result = sub_result
-    print(result)
+    for i in range(gap): 
+        sub_result = sum([x*y for x,y in zip(a,b)])
+        if sub_result > result:
+            result = sub_result
+        if len_a < len_b:
+            a.insert(0,0)
+        else: 
+            b.insert(0,0)
+    print(f'#{j} {result}')
 
-
-    # result = sum([x*y for x,y in zip(a,b)])
-    # print(result)
-
-# a.insert(0,0)
-# print(a)
-
-# if len_a < len_b:

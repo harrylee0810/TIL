@@ -255,7 +255,7 @@ def index(request):
 
 render라는 함수에는 첫번째 인수로  request를 넘겨주고, 어떠한 html 파일을 보여줄건지를 설정함. 접근할 주소는  views.py가 아닌 urls.py에 작성
 
- return 으로 들어오는 render함수의첫번째 인수는 위 index 함수의 파라미터와 동일한 변수값임.
+ return 으로 들어오는 render함수의 첫번째 인수는 위 index 함수의 파라미터와 동일한 변수값임.
 
 
 
@@ -319,6 +319,8 @@ views.py에서 함수 정의 =>  url.py에서 url 패턴 정의 =>  패턴에 �
 ### 3. 템플릿 변수
 
 템플릿으로 변수를 넘길 수 있음. 저녁 메뉴를 random으로 뽑혀서 보여주는 페이지를 생성해보자.
+
+
 
 **1) view.py**
 
@@ -389,6 +391,8 @@ return 되는 render 함수에 따라, dinner.html 파일을 request  함.
 ### 4. Variable routing
 
 주소자체를 변수로 사용하는것을 의미함. 주소로 부터 받고 싶은 변수의 이름을 파라미터(인자)로 정의해야함.    변수에 따라 다른 페이지 화면을 보여줌.
+
+
 
 **1) view.py**
 
@@ -476,7 +480,7 @@ urlpatterns = [
 </body>
 ```
 
-플라스크에서 작성했던 "요청을 보낼 HTML 생성"과 동일한 HTML 구성을 띔.  데이터를 넘겨주기 위해(요청을 보내기 위해), form 태그를 사용함.  (넘겨줄  url 주소를 form 태그의 action 속성의 값으로 입력)
+플라스크에서 작성했던 "요청을 보낼 HTML 생성"과 동일한 HTML 구성을 띔.  데이터를 넘겨주기 위해 (요청을 보내기 위해), form 태그를 사용함.  (넘겨줄  url 주소를 form 태그의 action 속성의 값으로 입력)
 
 input 태그 내에 작성된 내용이 message 라는 변수에 저장됨.  딕셔너리의 형태를 띔. 
 
@@ -524,7 +528,7 @@ def catch(request):
 
 *=> Get 방식으로 응답/요청을 주고 받는 throw.html에서 사용자가 입력한 내용을 받아, message라는 변수에 저장한다는 의미*
 
-최종적으로 render 함수의 템플릿 변수(html과 연동할 변수)를 'message'라 정의하고,   딕셔너리의 key 값으로 윗 줄에서 정의한 message를 넣는다. (템플릿 변수는 항상 Dict의 형태임을 잊지말자!)
+최종적으로 render 함수의 템플릿 변수(html과 연동할 변수)를 'message'라 정의하고,  딕셔너리의 key 값으로 윗 줄에서 정의한 message를 넣는다. (템플릿 변수는 항상 Dict의 형태임을 잊지말자!)
 
 
 
@@ -615,8 +619,6 @@ input 태그의 name 속성에는 네이버에서 요구하는 이름인 `query`
 
 CSS Framework인 Bootstrap을 사용하는 데 특별한 부분은 전혀 없다. 동일한 process를 적용하자.
 
-
-
 ```python
 #views.py
 def bootstrap(request):
@@ -645,20 +647,17 @@ urlpatterns = [
 
 
 
-### Appendix A : 명령어 정리
+## Appendix A : 명령어 정리
 
-| 명령어                                      | 정의              |
-| ------------------------------------------- | ----------------- |
-| pyenv virtualenv 3.6.7 [가상환경 명]        | 가상환경 생성     |
-| pyenv local [가상환경 명]                   | 가상환경으로 설정 |
-| pip install django                          | 장고 설치         |
-| django-admin start project [프로젝트이름] . | 프로젝트 생성     |
-| python manage.py startapp [앱이름]          | 어플리케이션 생성 |
-| python manage.py runserver $IP:$PORT        | 서버 실행         |
+| 명령어                                     | 정의              |
+| ------------------------------------------ | ----------------- |
+| pyenv virtualenv 3.6.7 [가상환경 명]       | 가상환경 생성     |
+| pyenv local [가상환경 명]                  | 가상환경으로 설정 |
+| pip install django                         | 장고 설치         |
+| django-admin startproject [프로젝트이름] . | 프로젝트 생성     |
+| python manage.py startapp [앱이름]         | 어플리케이션 생성 |
+| python manage.py runserver $IP:$PORT       | 서버 실행         |
 
-
-
-
-
+ 
 
 
